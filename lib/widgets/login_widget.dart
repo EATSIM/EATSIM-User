@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../widgets/circular_checkbox.dart';
 import '../widgets/logo.dart';
+import '../buttons/login_button.dart';
 
 class LoginWidget extends StatelessWidget {
   final bool autoLogin;
   final Function(bool)? onAutoLoginChanged;
 
   const LoginWidget({
-    super.key,
     required this.autoLogin,
     required this.onAutoLoginChanged,
   });
@@ -23,24 +23,11 @@ class LoginWidget extends StatelessWidget {
           _buildInputField("Password",
               fontSize: 16.0, color: Color(0xFFAFAFAF), isPassword: true),
           const SizedBox(height: 20),
-          Container(
-            height: 50,
-            width: 350,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFFF7AF48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
-            ),
+          // Modified onPressed to navigate to "/start"
+          LoginButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/start');
+            },
           ),
           const SizedBox(height: 20),
           Image.asset(
