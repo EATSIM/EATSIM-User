@@ -61,6 +61,8 @@ flutter:
     - assets/icon/
     # - assets/icon/home.png
     - assets/icon/logo.png
+    - assets/image/kakao_login_large_wide.png
+    - assets/image/kakao_login_medium_wide.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
