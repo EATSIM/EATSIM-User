@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class CellphoneButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const LoginButton({
+  const CellphoneButton({
     required this.onPressed,
     Key? key,
+    required String label,
   }) : super(key: key);
 
   @override
@@ -23,7 +24,7 @@ class LoginButton extends StatelessWidget {
         ),
         child: const Center(
           child: Text(
-            'Login',
+            '휴대폰 본인인증',
             style: TextStyle(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
