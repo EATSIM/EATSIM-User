@@ -19,7 +19,7 @@ class StartAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(105.0);
+  Size get preferredSize => Size.fromHeight(50.0);
 }
 
 class StartBottomBox extends StatefulWidget {
