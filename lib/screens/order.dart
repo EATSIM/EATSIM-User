@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class OrderListScreen extends StatefulWidget {
-  const OrderListScreen({Key? key}) : super(key: key);
+class OrderScreen extends StatefulWidget {
+  const OrderScreen({Key? key}) : super(key: key);
 
   @override
-  _OrderListScreenState createState() => _OrderListScreenState();
+  _OrderScreenState createState() => _OrderScreenState();
 }
 
-class _OrderListScreenState extends State<OrderListScreen> {
+class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('OrderListScreen Screen')),
+      appBar: AppBar(title: Text('OrderScreen')),
       body: Center(
-        child: Text('Welcome to OrderListScreen Screen!'),
+        child: Text('Welcome to OrderScreen Screen!'),
       ),
     );
   }
