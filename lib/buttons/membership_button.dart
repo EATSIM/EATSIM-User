@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class MembershipButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const LoginButton({
+  const MembershipButton({
     required this.onPressed,
     Key? key,
   }) : super(key: key);
@@ -23,7 +23,7 @@ class LoginButton extends StatelessWidget {
         ),
         child: const Center(
           child: Text(
-            'Login',
+            '회원가입',
             style: TextStyle(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),

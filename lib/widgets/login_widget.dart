@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/circular_checkbox.dart';
 import '../widgets/logo.dart';
 import '../buttons/login_button.dart';
+import 'text_input_widget.dart';
 
 class LoginWidget extends StatelessWidget {
   final bool autoLogin;
@@ -23,7 +24,6 @@ class LoginWidget extends StatelessWidget {
           _buildInputField("Password",
               fontSize: 16.0, color: Color(0xFFAFAFAF), isPassword: true),
           const SizedBox(height: 20),
-          // Modified onPressed to navigate to "/start"
           LoginButton(
             onPressed: () {
               Navigator.pushNamed(context, '/start');
@@ -92,17 +92,13 @@ class LoginWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildInputField(String labelText,
+Widget _buildInputField(String labelText,
       {double? fontSize, Color? color, bool isPassword = false}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
-        obscureText: isPassword,
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: const TextStyle(fontSize: 16, color: Color(0xFFAFAFAF)),
-        ),
-      ),
+    return TextInputWidget(
+      labelText: labelText,
+      fontSize: fontSize,
+      color: color,
+      isPassword: isPassword,
     );
   }
 }

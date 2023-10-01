@@ -40,14 +40,14 @@ class _CircularCheckboxState extends State<CircularCheckbox> {
             color: const Color(0xFFAFAFAF),
             width: 1.5,
           ),
-          color: _value ? Color(0xFFAFAFAF) : Colors.white,
+          color: _value ? Colors.white : Colors.white,
         ),
         child: _value
             ? Center(
                 child: Icon(
                   Icons.check,
                   size: 15.0,
-                  color: Colors.white,
+                  color: Color(0xFFAFAFAF),
                 ),
               )
             : null,
