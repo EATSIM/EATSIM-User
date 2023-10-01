@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/login_widget.dart'; // Import the LoginView
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -8,12 +9,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _autoLogin = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('LoginScreen Screen')),
-      body: Center(
-        child: Text('Welcome to LoginScreen Screen!'),
+      body: LoginWidget(
+        autoLogin: _autoLogin,
+        onAutoLoginChanged: (value) {
+          setState(() {
+            _autoLogin = value;
+          });
+        },
       ),
     );
   }

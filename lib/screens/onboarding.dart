@@ -11,10 +11,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('OnboardingScreen Screen')),
       body: Center(
-        child: Text('Welcome to OnboardingScreen Screen!'),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, '/login');
+          },
+          child: logo(),
+        ),
       ),
+    );
+  }
+
+  Widget logo() {
+    return Image.asset(
+      'assets/icon/logo.png',
+      height: 300,
+      width: 300,
     );
   }
 }
