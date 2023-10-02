@@ -24,7 +24,7 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
-            size: 30,
+            size: 25,
           ),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/start');
@@ -63,17 +63,22 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       height: 72,
       width: 395,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xffC5C5C5)),
+        border: Border(
+          top: BorderSide(color: const Color(0xffC5C5C5), width: 0.5),
+        ),
+        color: Colors.white,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildImageWithText(context, Icons.home, 'HOME', '/start', 0),
           _buildImageWithText(
-              context, Icons.rate_review, 'REVIEW', '/view_reviews', 1),
+              context, Icons.home_outlined, 'HOME', '/start', 0),
+          _buildImageWithText(context, Icons.rate_review_outlined, 'REVIEW',
+              '/view_reviews', 1),
           _buildImageWithText(
-              context, Icons.shopping_cart, 'ORDER', '/order_list', 2),
-          _buildImageWithText(context, Icons.person, 'MY', '/info_personal', 3),
+              context, Icons.description_outlined, 'ORDER', '/order_list', 2),
+          _buildImageWithText(
+              context, Icons.person_outlined, 'MY', '/info_personal', 3),
         ],
       ),
     );
@@ -92,18 +97,19 @@ class _StartBottomBoxState extends State<StartBottomBox> {
           const SizedBox(height: 10),
           Icon(
             iconData,
-            size: 25,
+            size: 24,
             color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 3),
           Text(
             label,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
             ),
           ),
+          const SizedBox(height: 3),
         ],
       ),
     );
