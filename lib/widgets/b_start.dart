@@ -25,9 +25,10 @@ class MyContainer extends StatelessWidget {
       },
       child: Container(
         width: 358.0,
+        height: 109.0,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -43,11 +44,21 @@ class MyContainer extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/icon/cafeteria.jpeg',
+                  child: Container(
                     width: 112.0,
                     height: 112.0,
-                    fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/icon/cafeteria.jpeg',
+                        width: 112.0,
+                        height: 112.0,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -66,7 +77,7 @@ class MyContainer extends StatelessWidget {
                       Text(
                         '위치: $location',
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -74,7 +85,7 @@ class MyContainer extends StatelessWidget {
                       Text(
                         '메뉴: $menu',
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -84,7 +95,7 @@ class MyContainer extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(top: 25, left: 244, child: stateButton()),
+            Positioned(top: 20, left: 244, child: stateButton()),
           ],
         ),
       ),
@@ -117,9 +128,10 @@ class bContainer extends StatelessWidget {
       },
       child: Container(
         width: 358.0,
+        height: 109.0,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -149,7 +161,7 @@ class bContainer extends StatelessWidget {
                       Text(
                         '위치: $location',
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -157,7 +169,7 @@ class bContainer extends StatelessWidget {
                       Text(
                         '메뉴: $menu',
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -176,7 +188,7 @@ class bContainer extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(top: 25, left: 15, child: stateButton()),
+            Positioned(top: 20, left: 15, child: stateButton()),
           ],
         ),
       ),
@@ -194,12 +206,7 @@ class stateButton extends StatelessWidget {
       height: 29,
       decoration: BoxDecoration(
         color: Color(0xffF7AF48),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          bottomLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-          bottomRight: Radius.circular(15),
-        ),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Center(
         child: Row(
@@ -208,7 +215,7 @@ class stateButton extends StatelessWidget {
           children: [
             Text(
               '30 / 100 이용중',
-              style: TextStyle(color: Colors.black, fontSize: 13),
+              style: TextStyle(color: Colors.white, fontSize: 13),
             )
           ],
         ),

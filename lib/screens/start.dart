@@ -56,7 +56,7 @@ class _StartScreenState extends State<StartScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: StartBottomBox(initialIndex: 2),
+      bottomNavigationBar: StartBottomBox(initialIndex: 0),
     );
   }
 }
