@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/b_main.dart';
+import '../widgets/d_info.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);

@@ -30,7 +30,10 @@ class AppRoutes {
       case '/change_school':
         return MaterialPageRoute(builder: (_) => ChangeSchoolScreen());
       case '/create_review':
-        return MaterialPageRoute(builder: (_) => CreateReviewScreen());
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => CreateReviewScreen(menuName: args['menuName']));
+
       case '/info_menu':
         return MaterialPageRoute(builder: (_) => InfoMenuScreen());
       case '/info_personal':
