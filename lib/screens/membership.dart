@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../buttons/membership_button.dart';
-import '../widgets/circular_checkbox.dart';
+import '../widgets/checkbox.dart';
+import '../widgets/dialog.dart';
+import '../widgets/fail_dialog.dart';
 import '../widgets/logo.dart';
-import '../widgets/text_input_widget.dart';
 import '../widgets/school_list_widget.dart';
+import 'school_list.dart';
 
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key}) : super(key: key);
@@ -16,16 +18,11 @@ class _MembershipScreenState extends State<MembershipScreen> {
   String? _selectedSchool;
   bool _personalInfoChecked = false;
   bool _serviceTermsChecked = false;
-  final List<String> _schoolList = [
-    '대구가톨릭대학교',
-    '영남대학교',
-    '대구대학교',
-    '경북대학교',
-    '경일대학교'
-  ];
+  final List<String> _schoolList = schoolList;
   String _searchQuery = '';
   bool _isListVisible = false;
 
+//이용약관 서비스 동의 checkbox
   Widget _buildCheckbox(
       String label, bool value, ValueChanged<bool?> onChanged) {
     return Row(
@@ -51,45 +48,54 @@ class _MembershipScreenState extends State<MembershipScreen> {
     super.dispose();
   }
 
+//회원가입 성공 시 팝업
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CompletionDialog();
+      },
+    );
+  }
+
+//회원가입 실패 시 팝업
+  void _showIncompleteInfoDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return FailDialog();
+      },
+    );
+  }
+
+//회원가입 시 확인되어야 할 정보
+  void _onMembershipButtonPressed() {
+    if (_personalInfoChecked &&
+        _serviceTermsChecked &&
+        _schoolSearchController.text.isNotEmpty) {
+      _showCompletionDialog();
+    } else {
+      _showIncompleteInfoDialog();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
                 const LogoWidget(),
-                const TextInputWidget(
-                  labelText: 'ID',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: '이름',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: '닉네임',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: 'PW',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                  isPassword: true,
-                ),
-                const TextInputWidget(
-                  labelText: 'PW확인',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                  isPassword: true,
-                ),
+                _buildTextField('ID'),
+                _buildTextField('이름'),
+                _buildTextField('닉네임'),
+                _buildTextField('PW', isPassword: true),
+                _buildTextField('PW확인', isPassword: true),
                 SchoolSearchWidget(
                   controller: _schoolSearchController,
                   onSearch: (value) {
@@ -135,14 +141,30 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 ),
                 const SizedBox(height: 30),
                 MembershipButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/start');
-                  },
+                  onPressed: _onMembershipButtonPressed,
                 ),
                 const SizedBox(height: 30),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String labelText, {bool isPassword = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 6),
+      child: TextField(
+        obscureText: isPassword,
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: const TextStyle(
+            color: Color(0xFFAFAFAF),
+          ),
+        ),
+        style: const TextStyle(
+          color: Color(0xFFAFAFAF),
         ),
       ),
     );
