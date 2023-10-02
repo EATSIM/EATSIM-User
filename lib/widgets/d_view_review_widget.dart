@@ -50,7 +50,7 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 13,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : const Color(0xff7E7E7E),
             ),
@@ -130,7 +130,7 @@ class _ReviewBoxState extends State<ReviewBox> {
       width: 395,
       height: 245,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xffEEEEEE)),
+        border: Border(bottom: BorderSide(color: const Color(0xffEEEEEE))),
       ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 20.0),
@@ -155,10 +155,10 @@ class _ReviewBoxState extends State<ReviewBox> {
       children: [
         Icon(
           Icons.account_circle,
-          size: 38,
+          size: 45,
           color: Color(0xffA9A9A9),
         ),
-        SizedBox(width: 10),
+        SizedBox(width: 13),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -166,17 +166,20 @@ class _ReviewBoxState extends State<ReviewBox> {
               '맛있어요',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 3),
             Row(
               children: [
-                Icon(
-                  Icons.room,
-                  size: 15,
-                  color: Color(0xffBDBDBD),
+                Text(
+                  '황**  | ',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xffBDBDBD),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(width: 5),
                 Text(
-                  'school',
+                  '중앙도서관',
                   style: TextStyle(
                     fontSize: 12,
                     color: Color(0xffBDBDBD),
@@ -204,7 +207,7 @@ class _ReviewBoxState extends State<ReviewBox> {
           ...List.generate(
               5,
               (index) => Icon(index < stars ? Icons.star : Icons.star_border,
-                  color: Colors.yellow, size: 17))
+                  color: Colors.black, size: 17))
         else ...[
           Text(content,
               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold))
