@@ -21,7 +21,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: infoAppBar(title: '리뷰 쓰기'),
+      appBar: const infoAppBar(title: '리뷰 쓰기'),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -37,18 +37,18 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       width: 50,
                       height: 50,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
                           widget.menuName,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 2),
-                        Row(
+                        const SizedBox(height: 2),
+                        const Row(
                           children: [
                             Icon(
                               Icons.room,
@@ -77,7 +77,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
@@ -88,7 +88,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -101,7 +101,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                           });
                         },
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       ReviewChoiceButton(
                         buttonText: "별로에요",
                         isSelected: selectedFood == "별로에요",
@@ -113,8 +113,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
-                  Align(
+                  const SizedBox(height: 25),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
@@ -125,10 +125,10 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
-                  SelectionBox(),
-                  SizedBox(height: 25),
-                  Align(
+                  const SizedBox(height: 15),
+                  const SelectionBox(),
+                  const SizedBox(height: 25),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
@@ -139,7 +139,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -152,7 +152,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                           });
                         },
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       ReviewChoiceButton(
                         buttonText: "개선이 필요해요",
                         isSelected: selectedService == "개선이 필요해요",
@@ -164,8 +164,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
-                  Align(
+                  const SizedBox(height: 25),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
@@ -176,10 +176,10 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  StarRating(),
-                  SizedBox(height: 25),
-                  Align(
+                  const SizedBox(height: 20),
+                  const StarRating(),
+                  const SizedBox(height: 25),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
@@ -190,11 +190,11 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
-                  ReviewTextField(),
-                  SizedBox(height: 10),
-                  ReviewTextBox(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 15),
+                  const ReviewTextField(),
+                  const SizedBox(height: 10),
+                  const ReviewTextBox(),
+                  const SizedBox(height: 20),
                   ReviewEndButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/start');

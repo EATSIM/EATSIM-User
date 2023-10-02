@@ -8,7 +8,7 @@ class LoginWidget extends StatelessWidget {
   final bool autoLogin;
   final Function(bool)? onAutoLoginChanged;
 
-  const LoginWidget({
+  const LoginWidget({super.key, 
     required this.autoLogin,
     required this.onAutoLoginChanged,
   });
@@ -19,10 +19,10 @@ class LoginWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LogoWidget(),
-          _buildInputField("ID", fontSize: 16.0, color: Color(0xFFAFAFAF)),
+          const LogoWidget(),
+          _buildInputField("ID", fontSize: 16.0, color: const Color(0xFFAFAFAF)),
           _buildInputField("Password",
-              fontSize: 16.0, color: Color(0xFFAFAFAF), isPassword: true),
+              fontSize: 16.0, color: const Color(0xFFAFAFAF), isPassword: true),
           const SizedBox(height: 20),
           LoginButton(
             onPressed: () {
@@ -80,7 +80,7 @@ class LoginWidget extends StatelessWidget {
               Container(
                 width: 100,
                 height: 1.0,
-                color: Color(0xFFAFAFAF),
+                color: const Color(0xFFAFAFAF),
               ),
               const SizedBox(width: 10),
               const Text(
@@ -95,7 +95,7 @@ class LoginWidget extends StatelessWidget {
               Container(
                 width: 100,
                 height: 1.0,
-                color: Color(0xFFAFAFAF),
+                color: const Color(0xFFAFAFAF),
               ),
             ],
           ),

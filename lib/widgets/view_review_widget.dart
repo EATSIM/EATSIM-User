@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 //리뷰 스위치
 class ReviewSwitch extends StatefulWidget {
+  const ReviewSwitch({super.key});
+
   @override
   _ReviewSwitchState createState() => _ReviewSwitchState();
 }
@@ -15,7 +17,7 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
       width: 193,
       height: 35,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Color(0xffF0F0F0)),
+          borderRadius: BorderRadius.circular(20), color: const Color(0xffF0F0F0)),
       child: Row(
         children: [
           _buildToggleButton('Review', _isMyReviewSelected, () {
@@ -40,7 +42,7 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: isSelected ? Color(0xffF7AF48) : null,
+            color: isSelected ? const Color(0xffF7AF48) : null,
             borderRadius: BorderRadius.circular(20),
           ),
           alignment: Alignment.center,
@@ -49,7 +51,7 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.black : Color(0xff7E7E7E),
+              color: isSelected ? Colors.black : const Color(0xff7E7E7E),
             ),
           ),
         ),
@@ -60,6 +62,8 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
 
 //리뷰 검색 버튼
 class SearchButtonRow extends StatefulWidget {
+  const SearchButtonRow({super.key});
+
   @override
   _SearchButtonRowState createState() => _SearchButtonRowState();
 }
@@ -73,9 +77,9 @@ class _SearchButtonRowState extends State<SearchButtonRow> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _customElevatedButton("식당", 52, 31, 0),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _customElevatedButton("메뉴", 54, 31, 1),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _customElevatedButton("만족도", 66, 31, 2),
       ],
     );
@@ -89,22 +93,21 @@ class _SearchButtonRowState extends State<SearchButtonRow> {
           _selectedButtonIndex = index;
         });
       },
-      child: Text(
-        label,
-        style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-      ),
       style: ElevatedButton.styleFrom(
-        primary: _selectedButtonIndex == index
-            ? Color(0xffF7AF48)
-            : Color(0xffF5F5F5),
-        onPrimary: _selectedButtonIndex == index
-            ? Color(0xff000000)
-            : Color(0xff7E7E7E),
+        foregroundColor: _selectedButtonIndex == index
+            ? const Color(0xff000000)
+            : const Color(0xff7E7E7E), backgroundColor: _selectedButtonIndex == index
+            ? const Color(0xffF7AF48)
+            : const Color(0xffF5F5F5),
         elevation: 2,
         minimumSize: Size(width, height),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -112,6 +115,8 @@ class _SearchButtonRowState extends State<SearchButtonRow> {
 
 //리뷰 박스
 class ReviewBox extends StatefulWidget {
+  const ReviewBox({super.key});
+
   @override
   _ReviewBoxState createState() => _ReviewBoxState();
 }
@@ -123,7 +128,7 @@ class _ReviewBoxState extends State<ReviewBox> {
       width: 395,
       height: 245,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xffEEEEEE)),
+        border: Border.all(color: const Color(0xffEEEEEE)),
       ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 20.0),
@@ -144,7 +149,7 @@ class _ReviewBoxState extends State<ReviewBox> {
   }
 
   Widget _buildHeader() {
-    return Row(
+    return const Row(
       children: [
         Icon(
           Icons.account_circle,
@@ -188,11 +193,11 @@ class _ReviewBoxState extends State<ReviewBox> {
     return Row(
       children: [
         Text(label,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
                 color: Color(0xff9E9E9E))),
-        SizedBox(width: 15),
+        const SizedBox(width: 15),
         if (label == '별점')
           ...List.generate(
               5,
@@ -200,7 +205,7 @@ class _ReviewBoxState extends State<ReviewBox> {
                   color: Colors.yellow, size: 17))
         else ...[
           Text(content,
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold))
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold))
         ]
       ],
     );

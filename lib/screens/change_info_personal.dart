@@ -14,10 +14,10 @@ class _ChangeInfoPersonalScreenState extends State<ChangeInfoPersonalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: infoAppBar(title: 'Edit Profile'),
+      appBar: const infoAppBar(title: 'Edit Profile'),
       body: Stack(
         children: [
-          Positioned(
+          const Positioned(
             top: 60,
             left: 0,
             right: 0,
@@ -35,7 +35,7 @@ class _ChangeInfoPersonalScreenState extends State<ChangeInfoPersonalScreen> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(180),
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.account_circle,
                   size: 150,
                 ),

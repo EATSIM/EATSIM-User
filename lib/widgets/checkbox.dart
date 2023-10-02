@@ -4,7 +4,7 @@ class CircularCheckbox extends StatefulWidget {
   final bool initialValue;
   final ValueChanged<bool>? onChanged;
 
-  const CircularCheckbox({
+  const CircularCheckbox({super.key, 
     required this.initialValue,
     this.onChanged,
   });
@@ -43,7 +43,7 @@ class _CircularCheckboxState extends State<CircularCheckbox> {
           color: _value ? Colors.white : Colors.white,
         ),
         child: _value
-            ? Center(
+            ? const Center(
                 child: Icon(
                   Icons.check,
                   size: 15.0,

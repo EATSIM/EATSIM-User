@@ -13,24 +13,24 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: infoAppBar(title: 'Profile'),
+      appBar: const infoAppBar(title: 'Profile'),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            ProfileBox(),
-            SizedBox(height: 20),
+            const ProfileBox(),
+            const SizedBox(height: 20),
             Container(
               height: 1,
-              color: Color(0xFFAFAFAF),
+              color: const Color(0xFFAFAFAF),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       Icon(Icons.school, size: 26),
                       SizedBox(width: 20),
@@ -45,7 +45,7 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
                     onTap: () {
                       Navigator.of(context).pushNamed('/change_school');
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.play_arrow,
                       color: Color(0xffBDBDBD),
                       size: 24,
@@ -54,8 +54,8 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -74,8 +74,8 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -97,7 +97,7 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: StartBottomBox(initialIndex: 3),
+      bottomNavigationBar: const StartBottomBox(initialIndex: 3),
     );
   }
 }

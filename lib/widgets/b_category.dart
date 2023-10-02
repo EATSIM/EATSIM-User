@@ -10,7 +10,7 @@ class CateBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
@@ -23,7 +23,7 @@ class CateBox extends StatelessWidget {
             height: 164.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage('assets/icon/cafeteria.jpeg'),
                 fit: BoxFit.cover,
               ),
@@ -36,7 +36,7 @@ class CateBox extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     item,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,

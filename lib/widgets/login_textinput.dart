@@ -51,7 +51,7 @@ class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CompletionDialog();
+        return const CompletionDialog();
       },
     );
   }
@@ -60,7 +60,7 @@ class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return FailDialog();
+        return const FailDialog();
       },
     );
   }

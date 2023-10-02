@@ -10,18 +10,18 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 0),
+      padding: const EdgeInsets.only(top: 0),
       child: AppBar(
         title: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color(0xffffffff),
+        backgroundColor: const Color(0xffffffff),
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
             size: 30,
@@ -35,14 +35,14 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(70.0);
+  Size get preferredSize => const Size.fromHeight(70.0);
 }
 
 //하단 버튼들
 class StartBottomBox extends StatefulWidget {
   final int initialIndex;
 
-  StartBottomBox({this.initialIndex = 0});
+  const StartBottomBox({super.key, this.initialIndex = 0});
 
   @override
   _StartBottomBoxState createState() => _StartBottomBoxState();
@@ -63,7 +63,7 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       height: 72,
       width: 395,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xffC5C5C5)),
+        border: Border.all(color: const Color(0xffC5C5C5)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,19 +89,19 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       },
       child: Column(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Icon(
             iconData,
             size: 25,
-            color: isSelected ? Colors.black : Color(0xFFC5C5C5),
+            color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             label,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.black : Color(0xFFC5C5C5),
+              color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
             ),
           ),
         ],
@@ -118,8 +118,8 @@ class OrderList extends StatelessWidget {
   final String time;
   final String stars;
 
-  OrderList(
-      {required this.imageUrl,
+  const OrderList(
+      {super.key, required this.imageUrl,
       required this.menuName,
       required this.school,
       required this.time,
@@ -133,8 +133,8 @@ class OrderList extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white,
-        border: Border.all(color: Colors.black, width: 0.5),
-        boxShadow: [
+        border: Border.all(color: const Color(0xffBDBDBD), width: 0.5),
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             offset: Offset(0, 4),
@@ -148,58 +148,60 @@ class OrderList extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 30),
                 child: Image.asset(
                   imageUrl,
                   width: 98,
                   height: 94,
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Text(
                     menuName,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 3),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.room,
                         size: 15,
                         color: Color(0xffBDBDBD),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text(
                         school,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12,
                             color: Color(0xffBDBDBD),
                             fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 3),
                   Text(
                     time,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 12,
                         color: Color(0xffB3B3B3),
                         fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(height: 3),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.star,
                         size: 15,
                         color: Colors.yellow,
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 3),
                       Text(
                         stars,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -223,7 +225,7 @@ class OrderList extends StatelessWidget {
 class ReviewButton extends StatelessWidget {
   final String menuName;
 
-  ReviewButton({required this.menuName});
+  const ReviewButton({super.key, required this.menuName});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -238,7 +240,7 @@ class ReviewButton extends StatelessWidget {
       child: Container(
         width: 125,
         height: 34,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xffF7AF48),
           boxShadow: [
             BoxShadow(
@@ -253,7 +255,7 @@ class ReviewButton extends StatelessWidget {
             bottomLeft: Radius.circular(20),
           ),
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(

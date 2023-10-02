@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 // 프로필 박스
 class ProfileBox extends StatelessWidget {
+  const ProfileBox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +13,7 @@ class ProfileBox extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(
-          color: Color(0xffBDBDBD),
+          color: const Color(0xffBDBDBD),
         ),
       ),
       child: Padding(
@@ -26,13 +28,13 @@ class ProfileBox extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.account_circle,
           size: 68,
           color: Color(0xff000000),
         ),
-        SizedBox(width: 10),
-        Expanded(
+        const SizedBox(width: 10),
+        const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,12 +65,12 @@ class ProfileBox extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, '/change_info_personal');
           },
-          child: Icon(
+          child: const Icon(
             Icons.play_arrow,
             color: Color(0xffBDBDBD),
             size: 24,
@@ -80,6 +82,8 @@ class ProfileBox extends StatelessWidget {
 }
 
 class ProfileSwitch extends StatefulWidget {
+  const ProfileSwitch({super.key});
+
   @override
   _ProfileSwitchState createState() => _ProfileSwitchState();
 }
@@ -93,7 +97,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
       width: 117,
       height: 25,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Color(0xffF0F0F0)),
+          borderRadius: BorderRadius.circular(20), color: const Color(0xffF0F0F0)),
       child: Row(
         children: [
           _buildToggleButton('YES', _isProfileSelected, () {
@@ -118,7 +122,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: isSelected ? Color(0xffF7AF48) : null,
+            color: isSelected ? const Color(0xffF7AF48) : null,
             borderRadius: BorderRadius.circular(20),
           ),
           alignment: Alignment.center,
@@ -127,7 +131,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.black : Color(0xff7E7E7E),
+              color: isSelected ? Colors.black : const Color(0xff7E7E7E),
             ),
           ),
         ),
@@ -147,7 +151,7 @@ class LogOutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       width: 350,
       child: ElevatedButton(
@@ -155,10 +159,10 @@ class LogOutButton extends StatelessWidget {
           Navigator.of(context).pushReplacementNamed('/login');
         },
         style: ElevatedButton.styleFrom(
-          primary: Color(0xffffffff),
+          backgroundColor: const Color(0xffffffff),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
-            side: BorderSide(color: Color(0xffBFBFBF), width: 1.0),
+            side: const BorderSide(color: Color(0xffBFBFBF), width: 1.0),
           ),
         ),
         child: const Center(
@@ -176,6 +180,8 @@ class LogOutButton extends StatelessWidget {
 }
 
 class ProfilesBox extends StatefulWidget {
+  const ProfilesBox({super.key});
+
   @override
   _ProfilesBoxState createState() => _ProfilesBoxState();
 }
@@ -194,13 +200,13 @@ class _ProfilesBoxState extends State<ProfilesBox> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(3, 3),
+            offset: const Offset(3, 3),
           ),
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(-3, 3),
+            offset: const Offset(-3, 3),
           ),
         ],
       ),
@@ -209,14 +215,14 @@ class _ProfilesBoxState extends State<ProfilesBox> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 15, 35, 10),
               child: _buildRow('ID', '아이디'),
             ),
             Container(
               height: 1,
-              color: Color(0xFFEDEDED),
+              color: const Color(0xFFEDEDED),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 15, 35, 10),
@@ -224,7 +230,7 @@ class _ProfilesBoxState extends State<ProfilesBox> {
             ),
             Container(
               height: 1,
-              color: Color(0xFFEDEDED),
+              color: const Color(0xFFEDEDED),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 15, 35, 10),
@@ -232,7 +238,7 @@ class _ProfilesBoxState extends State<ProfilesBox> {
             ),
             Container(
               height: 1,
-              color: Color(0xFFEDEDED),
+              color: const Color(0xFFEDEDED),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 15, 35, 10),
@@ -240,7 +246,7 @@ class _ProfilesBoxState extends State<ProfilesBox> {
             ),
             Container(
               height: 1,
-              color: Color(0xFFEDEDED),
+              color: const Color(0xFFEDEDED),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 15, 20, 10),
@@ -258,11 +264,11 @@ class _ProfilesBoxState extends State<ProfilesBox> {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 15, color: Color(0xffBDBDBD)),
+          style: const TextStyle(fontSize: 15, color: Color(0xffBDBDBD)),
         ),
         Text(
           content,
-          style: TextStyle(fontSize: 17, color: Color(0xff000000)),
+          style: const TextStyle(fontSize: 17, color: Color(0xff000000)),
         ),
       ],
     );

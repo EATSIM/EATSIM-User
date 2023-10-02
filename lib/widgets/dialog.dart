@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CompletionDialog extends StatelessWidget {
+  const CompletionDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -8,8 +10,8 @@ class CompletionDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
-      backgroundColor: Color(0xFFFFFEFA),
-      content: Container(
+      backgroundColor: const Color(0xFFFFFEFA),
+      content: SizedBox(
         width: 330,
         height: 200,
         child: Column(
@@ -23,19 +25,19 @@ class CompletionDialog extends StatelessWidget {
                 fontSize: 18.0,
               ),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFF7AF48),
+                backgroundColor: const Color(0xFFF7AF48),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                minimumSize: Size(280, 40), // Set minimum width
+                minimumSize: const Size(280, 40), // Set minimum width
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/start');
               },
-              child: Text(
+              child: const Text(
                 '완료',
                 style: TextStyle(
                   color: Colors.white,
@@ -44,7 +46,7 @@ class CompletionDialog extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
           ],
         ),
       ),

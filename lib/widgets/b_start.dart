@@ -6,7 +6,7 @@ class MyContainer extends StatelessWidget {
   final String location;
   final String menu;
 
-  MyContainer({
+  const MyContainer({super.key, 
     required this.cafeteriaName,
     required this.location,
     required this.menu,
@@ -33,7 +33,7 @@ class MyContainer extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 4,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -57,15 +57,15 @@ class MyContainer extends StatelessWidget {
                     children: [
                       Text(
                         cafeteriaName,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         '위치: $location',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class MyContainer extends StatelessWidget {
                       ),
                       Text(
                         '메뉴: $menu',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class MyContainer extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(top: 25, left: 244, child: stateButton()),
+            const Positioned(top: 25, left: 244, child: stateButton()),
           ],
         ),
       ),
@@ -98,7 +98,7 @@ class bContainer extends StatelessWidget {
   final String location;
   final String menu;
 
-  bContainer({
+  const bContainer({super.key, 
     required this.cafeteriaName,
     required this.location,
     required this.menu,
@@ -125,7 +125,7 @@ class bContainer extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 4,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -140,15 +140,15 @@ class bContainer extends StatelessWidget {
                     children: [
                       Text(
                         cafeteriaName,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         '위치: $location',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class bContainer extends StatelessWidget {
                       ),
                       Text(
                         '메뉴: $menu',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
@@ -176,7 +176,7 @@ class bContainer extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(top: 25, left: 15, child: stateButton()),
+            const Positioned(top: 25, left: 15, child: stateButton()),
           ],
         ),
       ),
@@ -192,7 +192,7 @@ class stateButton extends StatelessWidget {
     return Container(
       width: 99,
       height: 29,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xffF7AF48),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(15),
@@ -201,7 +201,7 @@ class stateButton extends StatelessWidget {
           bottomRight: Radius.circular(15),
         ),
       ),
-      child: Center(
+      child: const Center(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
