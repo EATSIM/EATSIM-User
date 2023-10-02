@@ -20,7 +20,7 @@ class _StartScreenState extends State<StartScreen> {
     return Scaffold(
       appBar: const StartAppBar(title: '대구가톨릭대학교'),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         child: SingleChildScrollView(
           child: Center(
             child: Column(
@@ -36,7 +36,7 @@ class _StartScreenState extends State<StartScreen> {
                           location: locations[index],
                           menu: menus[index],
                         ),
-                        const SizedBox(height: 20), // 컨테이너와 컨테이너 사이 간격
+                        const SizedBox(height: 30), // 컨테이너와 컨테이너 사이 간격
                       ],
                     );
                   } else {
@@ -47,7 +47,7 @@ class _StartScreenState extends State<StartScreen> {
                           location: locations[index],
                           menu: menus[index],
                         ),
-                        const SizedBox(height: 20), // 컨테이너와 컨테이너 사이 간격
+                        const SizedBox(height: 30), // 컨테이너와 컨테이너 사이 간격
                       ],
                     );
                   }
