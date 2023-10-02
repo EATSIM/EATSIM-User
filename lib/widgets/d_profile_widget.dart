@@ -130,7 +130,7 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 13,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : const Color(0xff7E7E7E),
             ),
