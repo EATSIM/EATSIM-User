@@ -34,7 +34,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
           },
         ),
       ),
-      body: CateBox(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        child: CateBox(),
+      ),
     );
   }
 }

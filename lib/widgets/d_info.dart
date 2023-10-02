@@ -130,11 +130,11 @@ class OrderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 359,
-      height: 151,
+      height: 146,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white,
-        border: Border.all(color: const Color(0xffBDBDBD), width: 0.5),
+        border: Border.all(color: const Color(0xffBDBDBD), width: 0.1),
         boxShadow: const [
           BoxShadow(
             color: Colors.black12,
@@ -149,7 +149,7 @@ class OrderList extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 50),
                 child: Image.asset(
                   imageUrl,
                   width: 98,
@@ -160,13 +160,13 @@ class OrderList extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 25),
                   Text(
                     menuName,
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       const Icon(
@@ -184,7 +184,7 @@ class OrderList extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 4),
                   Text(
                     time,
                     style: const TextStyle(
@@ -192,7 +192,7 @@ class OrderList extends StatelessWidget {
                         color: Color(0xffB3B3B3),
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       const Icon(
