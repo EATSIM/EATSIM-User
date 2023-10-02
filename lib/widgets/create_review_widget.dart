@@ -6,7 +6,7 @@ class ReviewChoiceButton extends StatefulWidget {
   final Function()? onTap;
   final bool isSelected;
 
-  ReviewChoiceButton({
+  const ReviewChoiceButton({super.key, 
     required this.buttonText,
     this.onTap,
     this.isSelected = false,
@@ -20,13 +20,14 @@ class _ReviewChoiceButtonState extends State<ReviewChoiceButton> {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints.tightFor(width: 168, height: 48),
+      constraints: const BoxConstraints.tightFor(width: 168, height: 48),
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed) || widget.isSelected)
-                return Color(0xffF7AF48);
+              if (states.contains(MaterialState.pressed) || widget.isSelected) {
+                return const Color(0xffF7AF48);
+              }
               return Colors.white;
             },
           ),
@@ -36,7 +37,7 @@ class _ReviewChoiceButtonState extends State<ReviewChoiceButton> {
               borderRadius: BorderRadius.circular(10),
               side: BorderSide(
                 color:
-                    widget.isSelected ? Colors.transparent : Color(0xffF5F5F5),
+                    widget.isSelected ? Colors.transparent : const Color(0xffF5F5F5),
               ),
             ),
           ),
@@ -45,8 +46,9 @@ class _ReviewChoiceButtonState extends State<ReviewChoiceButton> {
         child: Text(
           widget.buttonText,
           style: TextStyle(
-            color: widget.isSelected ? Colors.white : Color(0xff777777),
-            fontSize: 17,
+            color: widget.isSelected ? Colors.white : const Color(0xff777777),
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
           ),
         ),
       ),
@@ -56,6 +58,8 @@ class _ReviewChoiceButtonState extends State<ReviewChoiceButton> {
 
 //별점
 class StarRating extends StatefulWidget {
+  const StarRating({super.key});
+
   @override
   _StarRatingState createState() => _StarRatingState();
 }
@@ -80,8 +84,9 @@ class _StarRatingState extends State<StarRating> {
           },
           child: Icon(
             index < selectedStars ? Icons.star : Icons.star_border,
-            color: index < selectedStars ? Colors.yellow : Colors.grey,
-            size: 45.0,
+            color:
+                index < selectedStars ? const Color(0xffFFD233) : const Color(0xffFFD233),
+            size: 41.0,
           ),
         );
       }),
@@ -91,6 +96,8 @@ class _StarRatingState extends State<StarRating> {
 
 //보기가 여러개
 class SelectionBox extends StatefulWidget {
+  const SelectionBox({super.key});
+
   @override
   _SelectionBoxState createState() => _SelectionBoxState();
 }
@@ -106,7 +113,7 @@ class _SelectionBoxState extends State<SelectionBox> {
       height: 46,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Color(0xffF5F5F5)),
+        border: Border.all(color: const Color(0xffF5F5F5)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -123,14 +130,17 @@ class _SelectionBoxState extends State<SelectionBox> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: selectedSection == index
-                      ? Color(0xffF7AF48)
+                      ? const Color(0xffF7AF48)
                       : Colors.transparent,
                 ),
                 child: Text(
                   sections[index],
                   style: TextStyle(
-                    color:
-                        selectedSection == index ? Colors.white : Colors.black,
+                    color: selectedSection == index
+                        ? Colors.white
+                        : const Color(0xff777777),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -144,12 +154,14 @@ class _SelectionBoxState extends State<SelectionBox> {
 
 //리뷰 글 작성
 class ReviewTextField extends StatefulWidget {
+  const ReviewTextField({super.key});
+
   @override
   _ReviewTextFieldState createState() => _ReviewTextFieldState();
 }
 
 class _ReviewTextFieldState extends State<ReviewTextField> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -157,14 +169,16 @@ class _ReviewTextFieldState extends State<ReviewTextField> {
       width: 350,
       height: 209,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: const Color(0xFFDDDDDD)),
       ),
+      padding: const EdgeInsets.all(10),
       child: TextField(
         controller: _controller,
         maxLines: null,
         expands: true,
-        style: TextStyle(fontSize: 13),
-        decoration: InputDecoration(
+        style: const TextStyle(fontSize: 13),
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: '자세한 리뷰는 더 나은 서비스 제공에 도움이 됩니다.',
           contentPadding: EdgeInsets.all(10),
@@ -176,17 +190,19 @@ class _ReviewTextFieldState extends State<ReviewTextField> {
 
 //리뷰 알림창
 class ReviewTextBox extends StatelessWidget {
+  const ReviewTextBox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 393,
       height: 200,
       decoration: BoxDecoration(
-        color: Color(0xFFF5F5F5),
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(10),
       ),
-      padding: EdgeInsets.all(20),
-      child: Column(
+      padding: const EdgeInsets.all(20),
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -223,10 +239,11 @@ class ReviewEndButton extends StatelessWidget {
     return Container(
       height: 50,
       width: 350,
+      margin: const EdgeInsets.only(bottom: 40.0),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          primary: Color(0xFFF7AF48),
+          backgroundColor: const Color(0xFFF7AF48),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
@@ -234,7 +251,8 @@ class ReviewEndButton extends StatelessWidget {
         child: const Center(
           child: Text(
             '리뷰 등록하기',
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
       ),

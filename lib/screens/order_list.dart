@@ -24,12 +24,12 @@ class _OrderListScreenState extends State<OrderListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: infoAppBar(title: 'Order List'),
+      appBar: const infoAppBar(title: 'Order List'),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Column(
                 children: List.generate(
                   menuNames.length,
@@ -42,7 +42,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                         time: times[index],
                         stars: starRatings[index],
                       ),
-                      if (index != menuNames.length - 1) SizedBox(height: 20),
+                      if (index != menuNames.length - 1) const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -51,7 +51,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: StartBottomBox(initialIndex: 2),
+      bottomNavigationBar: const StartBottomBox(initialIndex: 2),
     );
   }
 }

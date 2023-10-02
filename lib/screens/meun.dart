@@ -11,8 +11,8 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('MenuScreen Screen')),
-      body: Center(
+      appBar: AppBar(title: const Text('MenuScreen Screen')),
+      body: const Center(
         child: Text('Welcome to MenuScreen Screen!'),
       ),
     );

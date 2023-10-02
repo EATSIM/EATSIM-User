@@ -6,7 +6,7 @@ class TextInputWidget extends StatelessWidget {
   final Color? color;
   final bool isPassword;
 
-  const TextInputWidget({
+  const TextInputWidget({super.key, 
     required this.labelText,
     this.fontSize,
     this.color,

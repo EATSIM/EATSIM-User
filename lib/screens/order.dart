@@ -11,8 +11,8 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('OrderScreen')),
-      body: Center(
+      appBar: AppBar(title: const Text('OrderScreen')),
+      body: const Center(
         child: Text('Welcome to OrderScreen Screen!'),
       ),
     );

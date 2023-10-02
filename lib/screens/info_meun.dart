@@ -11,8 +11,8 @@ class _InfoMenuScreenState extends State<InfoMenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('InfoMenuScreen Screen')),
-      body: Center(
+      appBar: AppBar(title: const Text('InfoMenuScreen Screen')),
+      body: const Center(
         child: Text('Welcome to InfoMenuScreen Screen!'),
       ),
     );

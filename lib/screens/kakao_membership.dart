@@ -31,7 +31,7 @@ class _KakaoMembershipScreenState extends State<KakaoMembershipScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CompletionDialog();
+        return const CompletionDialog();
       },
     );
   }
@@ -40,7 +40,7 @@ class _KakaoMembershipScreenState extends State<KakaoMembershipScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return FailDialog();
+        return const FailDialog();
       },
     );
   }

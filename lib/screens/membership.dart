@@ -53,7 +53,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CompletionDialog();
+        return const CompletionDialog();
       },
     );
   }
@@ -63,7 +63,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return FailDialog();
+        return const FailDialog();
       },
     );
   }

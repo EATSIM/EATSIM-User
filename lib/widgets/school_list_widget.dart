@@ -7,7 +7,7 @@ class SchoolSearchWidget extends StatelessWidget {
   final List<String> filteredSchools;
   final Function(String) onSchoolSelected;
 
-  const SchoolSearchWidget({
+  const SchoolSearchWidget({super.key, 
     required this.controller,
     required this.onSearch,
     required this.isListVisible,
@@ -23,7 +23,7 @@ class SchoolSearchWidget extends StatelessWidget {
         children: [
           TextField(
             controller: controller,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: '학교 검색',
               prefixIcon: Icon(
                 Icons.search,

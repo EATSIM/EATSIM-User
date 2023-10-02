@@ -11,8 +11,8 @@ class _ChangeSchoolScreenState extends State<ChangeSchoolScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ChangeSchoolScreen Screen')),
-      body: Center(
+      appBar: AppBar(title: const Text('ChangeSchoolScreen Screen')),
+      body: const Center(
         child: Text('Welcome to ChangeSchoolScreen Screen!'),
       ),
     );

@@ -20,43 +20,43 @@ class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/start':
-        return MaterialPageRoute(builder: (_) => StartScreen());
+        return MaterialPageRoute(builder: (_) => const StartScreen());
       case '/category':
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
             builder: (_) =>
                 CategoryScreen(cafeteriaName: args['cafeteriaName']));
       case '/cellphone':
-        return MaterialPageRoute(builder: (_) => CellphoneScreen());
+        return MaterialPageRoute(builder: (_) => const CellphoneScreen());
       case '/change_info_personal':
-        return MaterialPageRoute(builder: (_) => ChangeInfoPersonalScreen());
+        return MaterialPageRoute(builder: (_) => const ChangeInfoPersonalScreen());
       case '/change_school':
-        return MaterialPageRoute(builder: (_) => ChangeSchoolScreen());
+        return MaterialPageRoute(builder: (_) => const ChangeSchoolScreen());
       case '/create_review':
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
             builder: (_) => CreateReviewScreen(menuName: args['menuName']));
 
       case '/info_menu':
-        return MaterialPageRoute(builder: (_) => InfoMenuScreen());
+        return MaterialPageRoute(builder: (_) => const InfoMenuScreen());
       case '/info_personal':
-        return MaterialPageRoute(builder: (_) => InfoPersonalScreen());
+        return MaterialPageRoute(builder: (_) => const InfoPersonalScreen());
       case '/kakao_membership':
-        return MaterialPageRoute(builder: (_) => KakaoMembershipScreen());
+        return MaterialPageRoute(builder: (_) => const KakaoMembershipScreen());
       case '/login':
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       case '/membership':
-        return MaterialPageRoute(builder: (_) => MembershipScreen());
+        return MaterialPageRoute(builder: (_) => const MembershipScreen());
       case '/menu':
-        return MaterialPageRoute(builder: (_) => MenuScreen());
+        return MaterialPageRoute(builder: (_) => const MenuScreen());
       case '/onboarding':
-        return MaterialPageRoute(builder: (_) => OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case '/order':
-        return MaterialPageRoute(builder: (_) => OrderScreen());
+        return MaterialPageRoute(builder: (_) => const OrderScreen());
       case '/order_list':
-        return MaterialPageRoute(builder: (_) => OrderListScreen());
+        return MaterialPageRoute(builder: (_) => const OrderListScreen());
       case '/view_reviews':
-        return MaterialPageRoute(builder: (_) => ViewReviewsScreen());
+        return MaterialPageRoute(builder: (_) => const ViewReviewsScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
