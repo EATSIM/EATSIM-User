@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/d_info.dart';
-import '../widgets/view_review_widget.dart';
+import '../widgets/d_view_review_widget.dart';
 
 class ViewReviewsScreen extends StatefulWidget {
   const ViewReviewsScreen({Key? key}) : super(key: key);
@@ -37,7 +37,8 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: List.generate(reviewCount, (index) => const ReviewBox()),
+                children:
+                    List.generate(reviewCount, (index) => const ReviewBox()),
               ),
             ),
           ),

@@ -97,7 +97,8 @@ class _ProfileSwitchState extends State<ProfileSwitch> {
       width: 117,
       height: 25,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: const Color(0xffF0F0F0)),
+          borderRadius: BorderRadius.circular(20),
+          color: const Color(0xffF0F0F0)),
       child: Row(
         children: [
           _buildToggleButton('YES', _isProfileSelected, () {

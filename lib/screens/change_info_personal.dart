@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/d_info.dart';
-import '../widgets/profile_widget.dart';
+import '../widgets/d_profile_widget.dart';
 
 class ChangeInfoPersonalScreen extends StatefulWidget {
   const ChangeInfoPersonalScreen({Key? key}) : super(key: key);

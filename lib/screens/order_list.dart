@@ -42,7 +42,8 @@ class _OrderListScreenState extends State<OrderListScreen> {
                         time: times[index],
                         stars: starRatings[index],
                       ),
-                      if (index != menuNames.length - 1) const SizedBox(height: 20),
+                      if (index != menuNames.length - 1)
+                        const SizedBox(height: 20),
                     ],
                   ),
                 ),

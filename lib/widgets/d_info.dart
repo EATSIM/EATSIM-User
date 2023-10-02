@@ -119,7 +119,8 @@ class OrderList extends StatelessWidget {
   final String stars;
 
   const OrderList(
-      {super.key, required this.imageUrl,
+      {super.key,
+      required this.imageUrl,
       required this.menuName,
       required this.school,
       required this.time,
@@ -162,7 +163,8 @@ class OrderList extends StatelessWidget {
                   const SizedBox(height: 15),
                   Text(
                     menuName,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 3),
                   Row(

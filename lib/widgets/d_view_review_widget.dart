@@ -17,7 +17,8 @@ class _ReviewSwitchState extends State<ReviewSwitch> {
       width: 193,
       height: 35,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: const Color(0xffF0F0F0)),
+          borderRadius: BorderRadius.circular(20),
+          color: const Color(0xffF0F0F0)),
       child: Row(
         children: [
           _buildToggleButton('Review', _isMyReviewSelected, () {
@@ -96,7 +97,8 @@ class _SearchButtonRowState extends State<SearchButtonRow> {
       style: ElevatedButton.styleFrom(
         foregroundColor: _selectedButtonIndex == index
             ? const Color(0xff000000)
-            : const Color(0xff7E7E7E), backgroundColor: _selectedButtonIndex == index
+            : const Color(0xff7E7E7E),
+        backgroundColor: _selectedButtonIndex == index
             ? const Color(0xffF7AF48)
             : const Color(0xffF5F5F5),
         elevation: 2,
