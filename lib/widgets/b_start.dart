@@ -44,7 +44,7 @@ class MyContainer extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 10),
+                  padding: const EdgeInsets.only(left: 5, right: 10, bottom: 5),
                   child: ClipOvalImage(),
                 ),
                 Expanded(
@@ -184,7 +184,7 @@ class bContainer extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 5),
+                  padding: const EdgeInsets.only(left: 10, right: 5, bottom: 5),
                   child: ClipOvalImage(),
                 ),
               ],
