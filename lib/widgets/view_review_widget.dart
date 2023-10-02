@@ -187,14 +187,21 @@ class _ReviewBoxState extends State<ReviewBox> {
   Widget _buildLabelText(String label, String content, {int stars = 0}) {
     return Row(
       children: [
-        Text(label, style: TextStyle(fontSize: 17)),
-        SizedBox(width: 10),
+        Text(label,
+            style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff9E9E9E))),
+        SizedBox(width: 15),
         if (label == '별점')
           ...List.generate(
               5,
               (index) => Icon(index < stars ? Icons.star : Icons.star_border,
                   color: Colors.yellow, size: 17))
-        else ...[Text(content, style: TextStyle(fontSize: 17))]
+        else ...[
+          Text(content,
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold))
+        ]
       ],
     );
   }
