@@ -3,7 +3,6 @@ import '../buttons/membership_button.dart';
 import '../widgets/circular_checkbox.dart';
 import '../widgets/logo.dart';
 import '../widgets/text_input_widget.dart';
-import '../widgets/school_list_widget.dart';
 
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key}) : super(key: key);

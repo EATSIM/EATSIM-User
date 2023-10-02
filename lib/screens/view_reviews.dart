@@ -10,6 +10,8 @@ class ViewReviewsScreen extends StatefulWidget {
 }
 
 class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
+  final int reviewCount = 4;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,15 +19,29 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text("어떤 내용이든지 넣으세요"),
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                ReviewSwitch(),
+                SizedBox(height: 15),
+                Container(
+                  height: 1,
+                  color: Color(0xFFEEEEEE),
+                ),
+                SizedBox(height: 5),
+                SearchButtonRow(),
+                SizedBox(height: 5),
+                Container(
+                  height: 1,
+                  color: Color(0xFFEEEEEE),
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: [
-                  ReviewBox(),
-                ],
+                children: List.generate(reviewCount, (index) => ReviewBox()),
               ),
             ),
           ),
@@ -35,4 +51,3 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
     );
   }
 }
-

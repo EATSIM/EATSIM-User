@@ -63,7 +63,7 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       height: 72,
       width: 395,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: Color(0xffC5C5C5)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,13 +89,17 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       },
       child: Column(
         children: [
-          SizedBox(height: 5),
-          Icon(iconData, size: 28),
+          SizedBox(height: 10),
+          Icon(
+            iconData,
+            size: 25,
+            color: isSelected ? Colors.black : Color(0xFFC5C5C5),
+          ),
           SizedBox(height: 5),
           Text(
             label,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : Color(0xFFC5C5C5),
             ),
