@@ -22,10 +22,11 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: infoAppBar(title: '리뷰 쓰기'),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,24 +41,25 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(height: 5),
                         Text(
                           widget.menuName,
                           style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 2),
                         Row(
                           children: [
                             Icon(
                               Icons.room,
-                              size: 15,
+                              size: 12,
                               color: Color(0xffBDBDBD),
                             ),
-                            SizedBox(width: 5),
+                            SizedBox(width: 2),
                             Text(
                               'school',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 11,
                                 color: Color(0xffBDBDBD),
                                 fontWeight: FontWeight.bold,
                               ),
@@ -86,7 +88,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -111,7 +113,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -123,9 +125,9 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 15),
                   SelectionBox(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -137,7 +139,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -162,7 +164,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -174,9 +176,9 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 20),
                   StarRating(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -188,7 +190,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 15),
                   ReviewTextField(),
                   SizedBox(height: 10),
                   ReviewTextBox(),
