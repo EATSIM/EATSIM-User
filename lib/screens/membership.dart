@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../buttons/membership_button.dart';
-import '../widgets/circular_checkbox.dart';
+import '../widgets/checkbox.dart';
+import '../widgets/dialog.dart';
+import '../widgets/fail_dialog.dart';
 import '../widgets/logo.dart';
-import '../widgets/text_input_widget.dart';
+import '../widgets/school_list_widget.dart';
+import 'school_list.dart';
 
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key}) : super(key: key);
@@ -15,10 +18,11 @@ class _MembershipScreenState extends State<MembershipScreen> {
   String? _selectedSchool;
   bool _personalInfoChecked = false;
   bool _serviceTermsChecked = false;
-  List<String> _schoolList = ['대구가톨릭대학교', '영남대학교', '대구대학교', '경북대학교', '경일대학교'];
+  final List<String> _schoolList = schoolList;
   String _searchQuery = '';
   bool _isListVisible = false;
 
+//이용약관 서비스 동의 checkbox
   Widget _buildCheckbox(
       String label, bool value, ValueChanged<bool?> onChanged) {
     return Row(
@@ -36,73 +40,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
     );
   }
 
-  Widget _buildSchoolList() {
-    if (!_isListVisible) {
-      return SizedBox();
-    }
-
-    List<String> filteredSchools = _schoolList
-        .where((school) =>
-            school.toLowerCase().contains(_searchQuery.toLowerCase()))
-        .toList();
-
-    filteredSchools.sort();
-
-    if (filteredSchools.isEmpty && _searchQuery.isNotEmpty) {
-      return Center(
-        child: Text(
-          '일치하는 학교가 없습니다.',
-          style: TextStyle(
-            fontSize: 13.0,
-            color: Color(0xFFAFAFAF),
-          ),
-        ),
-      );
-    }
-
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFFBDBDBD)),
-      ),
-      child: ListView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        itemCount: filteredSchools.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                _selectedSchool = filteredSchools[index];
-                _searchQuery = _selectedSchool ?? '';
-                _isListVisible = false;
-                _schoolSearchController.text = _selectedSchool ?? '';
-              });
-            },
-            child: Container(
-              padding: EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: _selectedSchool == filteredSchools[index]
-                      ? Colors
-                          .black // Change the border color for selected item
-                      : Colors.transparent,
-                ),
-              ),
-              child: Text(
-                filteredSchools[index],
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  letterSpacing: -0.5,
-                  color: Color(0xFFBDBDBD),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-
   final TextEditingController _schoolSearchController = TextEditingController();
 
   @override
@@ -111,68 +48,77 @@ class _MembershipScreenState extends State<MembershipScreen> {
     super.dispose();
   }
 
+//회원가입 성공 시 팝업
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CompletionDialog();
+      },
+    );
+  }
+
+//회원가입 실패 시 팝업
+  void _showIncompleteInfoDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return FailDialog();
+      },
+    );
+  }
+
+//회원가입 시 확인되어야 할 정보
+  void _onMembershipButtonPressed() {
+    if (_personalInfoChecked &&
+        _serviceTermsChecked &&
+        _schoolSearchController.text.isNotEmpty) {
+      _showCompletionDialog();
+    } else {
+      _showIncompleteInfoDialog();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
                 const LogoWidget(),
-                const TextInputWidget(
-                  labelText: 'ID',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: '이름',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: '닉네임',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                ),
-                const TextInputWidget(
-                  labelText: 'PW',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                  isPassword: true,
-                ),
-                const TextInputWidget(
-                  labelText: 'PW확인',
-                  fontSize: 16.0,
-                  color: Color(0xFFAFAFAF),
-                  isPassword: true,
-                ),
-                TextField(
+                _buildTextField('ID'),
+                _buildTextField('이름'),
+                _buildTextField('닉네임'),
+                _buildTextField('PW', isPassword: true),
+                _buildTextField('PW확인', isPassword: true),
+                SchoolSearchWidget(
                   controller: _schoolSearchController,
-                  decoration: const InputDecoration(
-                    labelText: '학교 검색',
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Color(0xFFBDBDBD),
-                  ),
-                  onTap: () {
-                    setState(() {
-                      _isListVisible = true;
-                    });
-                  },
-                  onChanged: (value) {
+                  onSearch: (value) {
                     setState(() {
                       _searchQuery = value;
                       _isListVisible = _searchQuery.isNotEmpty;
                     });
                   },
+                  isListVisible: _isListVisible,
+                  filteredSchools: _schoolList
+                      .where((school) => school
+                          .toLowerCase()
+                          .contains(_searchQuery.toLowerCase()))
+                      .toList(),
+                  onSchoolSelected: (school) {
+                    setState(() {
+                      _selectedSchool = school;
+                      _searchQuery = _selectedSchool ?? '';
+                      _isListVisible = false;
+                      _schoolSearchController.text = _selectedSchool ?? '';
+                    });
+                  },
                 ),
-                _buildSchoolList(),
                 const SizedBox(height: 30),
                 _buildCheckbox(
                   "개인정보 이용약관",
@@ -195,14 +141,30 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 ),
                 const SizedBox(height: 30),
                 MembershipButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/start');
-                  },
+                  onPressed: _onMembershipButtonPressed,
                 ),
                 const SizedBox(height: 30),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(String labelText, {bool isPassword = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 6),
+      child: TextField(
+        obscureText: isPassword,
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: const TextStyle(
+            color: Color(0xFFAFAFAF),
+          ),
+        ),
+        style: const TextStyle(
+          color: Color(0xFFAFAFAF),
         ),
       ),
     );

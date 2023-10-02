@@ -15,14 +15,20 @@ class TextInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 20),
       child: TextField(
         obscureText: isPassword,
         decoration: InputDecoration(
           labelText: labelText,
           labelStyle: TextStyle(
-              fontSize: fontSize ?? 16, color: color ?? Color(0xFFAFAFAF)),
+            color: color ?? Colors.black,
+            fontSize: fontSize ?? 14.0,
+          ),
+        ),
+        style: TextStyle(
+          color: color ?? Colors.black,
+          fontSize: fontSize ?? 14.0,
         ),
       ),
     );

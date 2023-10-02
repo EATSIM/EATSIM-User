@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/logo.dart';
-import '../widgets/text_input_widget.dart';
 import '../buttons/cellphone_button.dart';
+import '../widgets/textinput_widget.dart';
 
 class CellphoneScreen extends StatefulWidget {
   const CellphoneScreen({Key? key}) : super(key: key);
@@ -16,13 +16,13 @@ class _CellphoneScreenState extends State<CellphoneScreen> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(6.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LogoWidget(),
+              const LogoWidget(),
               const SizedBox(height: 30),
-              TextInputWidget(
+              const TextInputWidget(
                 labelText: '본인인증을 진행해주세요.',
                 fontSize: 16.0,
                 color: Color(0xFFAFAFAF),
