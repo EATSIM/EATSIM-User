@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/d_info.dart';
+import '../widgets/profile_widget.dart';
 
 class ChangeInfoPersonalScreen extends StatefulWidget {
   const ChangeInfoPersonalScreen({Key? key}) : super(key: key);
@@ -12,9 +14,47 @@ class _ChangeInfoPersonalScreenState extends State<ChangeInfoPersonalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ChangeInfoPersonal Screen')),
-      body: Center(
-        child: Text('Welcome to ChangeInfoPersonal Screen!'),
+      appBar: infoAppBar(title: 'Edit Profile'),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 60,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: ProfilesBox(),
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(180),
+                ),
+                child: Icon(
+                  Icons.account_circle,
+                  size: 150,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 30,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: LogOutButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/login');
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
