@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/circular_checkbox.dart';
+import 'checkbox.dart';
 import '../widgets/logo.dart';
 import '../buttons/login_button.dart';
-import 'text_input_widget.dart';
+import 'textinput_widget.dart';
 
 class LoginWidget extends StatelessWidget {
   final bool autoLogin;
@@ -30,9 +30,15 @@ class LoginWidget extends StatelessWidget {
             },
           ),
           const SizedBox(height: 20),
-          Image.asset(
-            'assets/image/kakao_login_large_wide.png',
-            width: 350,
+          GestureDetector(
+            onTap: () {
+              // Navigate to '/kakao_membership' screen
+              Navigator.pushNamed(context, '/kakao_membership');
+            },
+            child: Image.asset(
+              'assets/image/kakao_login_large_wide.png',
+              width: 350,
+            ),
           ),
           const SizedBox(height: 10),
           Row(
@@ -48,7 +54,10 @@ class LoginWidget extends StatelessWidget {
                   const SizedBox(width: 10),
                   const Text(
                     '자동로그인',
-                    style: TextStyle(color: Color(0xFFAFAFAF), fontSize: 14.0),
+                    style: TextStyle(
+                      color: Color(0xFFAFAFAF),
+                      fontSize: 14.0,
+                    ),
                   ),
                 ],
               ),
@@ -65,15 +74,32 @@ class LoginWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 60),
-          Text(
-            '-------------- EATSIM이 처음이라면?--------------',
-            style: TextStyle(
-              color: Color(0xFFAFAFAF),
-              fontSize: 15.0,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 100,
+                height: 1.0,
+                color: Color(0xFFAFAFAF),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'EATSIM이 처음이라면?',
+                style: TextStyle(
+                  color: Color(0xFFAFAFAF),
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Container(
+                width: 100,
+                height: 1.0,
+                color: Color(0xFFAFAFAF),
+              ),
+            ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 23),
           GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/cellphone');
@@ -82,7 +108,7 @@ class LoginWidget extends StatelessWidget {
               '회원가입',
               style: TextStyle(
                 color: Color(0xFFAFAFAF),
-                fontSize: 16.0,
+                fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -92,7 +118,7 @@ class LoginWidget extends StatelessWidget {
     );
   }
 
-Widget _buildInputField(String labelText,
+  Widget _buildInputField(String labelText,
       {double? fontSize, Color? color, bool isPassword = false}) {
     return TextInputWidget(
       labelText: labelText,

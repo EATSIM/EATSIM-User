@@ -63,7 +63,7 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       height: 72,
       width: 395,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: Color(0xffC5C5C5)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,13 +89,17 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       },
       child: Column(
         children: [
-          SizedBox(height: 5),
-          Icon(iconData, size: 28),
+          SizedBox(height: 10),
+          Icon(
+            iconData,
+            size: 25,
+            color: isSelected ? Colors.black : Color(0xFFC5C5C5),
+          ),
           SizedBox(height: 5),
           Text(
             label,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : Color(0xFFC5C5C5),
             ),
@@ -265,6 +269,142 @@ class ReviewButton extends StatelessWidget {
             ),
             SizedBox(width: 10),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+// 프로필 박스
+class ProfileBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 365.0,
+      height: 88.0,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(
+          color: Color(0xffBDBDBD),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0), // 추가: Padding for inner contents
+        child: _buildHeader(context),
+      ),
+    );
+  }
+
+  Widget _buildHeader(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.account_circle,
+          size: 68,
+          color: Color(0xff000000),
+        ),
+        SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '이름',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Row(
+                children: [
+                  Icon(
+                    Icons.room,
+                    size: 15,
+                    color: Color(0xffBDBDBD),
+                  ),
+                  SizedBox(width: 5),
+                  Text(
+                    'school',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xffBDBDBD),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(width: 10),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, '/change_info_personal');
+          },
+          child: Icon(
+            Icons.play_arrow,
+            color: Color(0xffBDBDBD),
+            size: 24,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ProfileSwitch extends StatefulWidget {
+  @override
+  _ProfileSwitchState createState() => _ProfileSwitchState();
+}
+
+class _ProfileSwitchState extends State<ProfileSwitch> {
+  bool _isProfileSelected = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 117,
+      height: 25,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: Color(0xffF0F0F0)),
+      child: Row(
+        children: [
+          _buildToggleButton('YES', _isProfileSelected, () {
+            setState(() {
+              _isProfileSelected = true;
+            });
+          }),
+          _buildToggleButton('NO', !_isProfileSelected, () {
+            setState(() {
+              _isProfileSelected = false;
+            });
+          }),
+        ],
+      ),
+    );
+  }
+
+  Expanded _buildToggleButton(
+      String text, bool isSelected, VoidCallback onTap) {
+    return Expanded(
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: isSelected ? Color(0xffF7AF48) : null,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: isSelected ? Colors.black : Color(0xff7E7E7E),
+            ),
+          ),
         ),
       ),
     );
