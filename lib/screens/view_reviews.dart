@@ -31,10 +31,6 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
                 SizedBox(height: 5),
                 SearchButtonRow(),
                 SizedBox(height: 5),
-                Container(
-                  height: 1,
-                  color: Color(0xFFEEEEEE),
-                ),
               ],
             ),
           ),

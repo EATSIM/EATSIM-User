@@ -8,7 +8,13 @@ class StartAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      centerTitle: true,
+      automaticallyImplyLeading: false,
       backgroundColor: Color(0xFFF7AF48),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -19,5 +25,5 @@ class StartAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(50.0);
+  Size get preferredSize => Size.fromHeight(60.0);
 }

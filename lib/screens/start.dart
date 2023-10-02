@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/d_info.dart';
 import '../widgets/b_start.dart';
+import '../widgets/b_main.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: infoAppBar(title: '대구가톨릭대학교'),
+      appBar: StartAppBar(title: '대구가톨릭대학교'),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 20),
         child: SingleChildScrollView(
@@ -56,7 +57,7 @@ class _StartScreenState extends State<StartScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: StartBottomBox(initialIndex: 2),
+      bottomNavigationBar: StartBottomBox(initialIndex: 0),
     );
   }
 }

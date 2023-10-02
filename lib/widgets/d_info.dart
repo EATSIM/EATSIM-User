@@ -17,7 +17,7 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
           style: TextStyle(
               color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color(0xFFF7AF48),
+        backgroundColor: Color(0xffffffff),
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
