@@ -22,7 +22,10 @@ class AppRoutes {
       case '/start':
         return MaterialPageRoute(builder: (_) => StartScreen());
       case '/category':
-        return MaterialPageRoute(builder: (_) => CategoryScreen());
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) =>
+                CategoryScreen(cafeteriaName: args['cafeteriaName']));
       case '/cellphone':
         return MaterialPageRoute(builder: (_) => CellphoneScreen());
       case '/change_info_personal':

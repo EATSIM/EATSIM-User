@@ -46,7 +46,8 @@ class _ReviewChoiceButtonState extends State<ReviewChoiceButton> {
           widget.buttonText,
           style: TextStyle(
             color: widget.isSelected ? Colors.white : Color(0xff777777),
-            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
           ),
         ),
       ),
@@ -80,8 +81,9 @@ class _StarRatingState extends State<StarRating> {
           },
           child: Icon(
             index < selectedStars ? Icons.star : Icons.star_border,
-            color: index < selectedStars ? Colors.yellow : Colors.grey,
-            size: 45.0,
+            color:
+                index < selectedStars ? Color(0xffFFD233) : Color(0xffFFD233),
+            size: 41.0,
           ),
         );
       }),
@@ -129,8 +131,11 @@ class _SelectionBoxState extends State<SelectionBox> {
                 child: Text(
                   sections[index],
                   style: TextStyle(
-                    color:
-                        selectedSection == index ? Colors.white : Colors.black,
+                    color: selectedSection == index
+                        ? Colors.white
+                        : Color(0xff777777),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -157,8 +162,10 @@ class _ReviewTextFieldState extends State<ReviewTextField> {
       width: 350,
       height: 209,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: Color(0xFFDDDDDD)),
       ),
+      padding: EdgeInsets.all(10),
       child: TextField(
         controller: _controller,
         maxLines: null,
@@ -186,7 +193,7 @@ class ReviewTextBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       padding: EdgeInsets.all(20),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -223,6 +230,7 @@ class ReviewEndButton extends StatelessWidget {
     return Container(
       height: 50,
       width: 350,
+      margin: EdgeInsets.only(bottom: 40.0),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -234,7 +242,8 @@ class ReviewEndButton extends StatelessWidget {
         child: const Center(
           child: Text(
             '리뷰 등록하기',
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
       ),
