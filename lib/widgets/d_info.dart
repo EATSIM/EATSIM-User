@@ -10,14 +10,14 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 0),
       child: AppBar(
         title: Text(
           title,
           style: TextStyle(
               color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF7AF48),
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
