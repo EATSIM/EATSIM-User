@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/d_info.dart';
-import '../widgets/create_review_widget.dart';
+import '../widgets/d_create_review_widget.dart';
 
 class CreateReviewScreen extends StatefulWidget {
   final String menuName;

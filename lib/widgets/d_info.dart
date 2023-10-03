@@ -24,7 +24,7 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
-            size: 30,
+            size: 25,
           ),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/start');
@@ -63,17 +63,22 @@ class _StartBottomBoxState extends State<StartBottomBox> {
       height: 72,
       width: 395,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xffC5C5C5)),
+        border: Border(
+          top: BorderSide(color: const Color(0xffC5C5C5), width: 0.5),
+        ),
+        color: Colors.white,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildImageWithText(context, Icons.home, 'HOME', '/start', 0),
           _buildImageWithText(
-              context, Icons.rate_review, 'REVIEW', '/view_reviews', 1),
+              context, Icons.home_outlined, 'HOME', '/start', 0),
+          _buildImageWithText(context, Icons.rate_review_outlined, 'REVIEW',
+              '/view_reviews', 1),
           _buildImageWithText(
-              context, Icons.shopping_cart, 'ORDER', '/order_list', 2),
-          _buildImageWithText(context, Icons.person, 'MY', '/info_personal', 3),
+              context, Icons.description_outlined, 'ORDER', '/order_list', 2),
+          _buildImageWithText(
+              context, Icons.person_outlined, 'MY', '/info_personal', 3),
         ],
       ),
     );
@@ -92,18 +97,19 @@ class _StartBottomBoxState extends State<StartBottomBox> {
           const SizedBox(height: 10),
           Icon(
             iconData,
-            size: 25,
+            size: 24,
             color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 3),
           Text(
             label,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: isSelected ? Colors.black : const Color(0xFFC5C5C5),
             ),
           ),
+          const SizedBox(height: 3),
         ],
       ),
     );
@@ -119,7 +125,8 @@ class OrderList extends StatelessWidget {
   final String stars;
 
   const OrderList(
-      {super.key, required this.imageUrl,
+      {super.key,
+      required this.imageUrl,
       required this.menuName,
       required this.school,
       required this.time,
@@ -129,11 +136,11 @@ class OrderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 359,
-      height: 151,
+      height: 146,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white,
-        border: Border.all(color: const Color(0xffBDBDBD), width: 0.5),
+        border: Border.all(color: const Color(0xffBDBDBD), width: 0.1),
         boxShadow: const [
           BoxShadow(
             color: Colors.black12,
@@ -148,7 +155,7 @@ class OrderList extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 50),
                 child: Image.asset(
                   imageUrl,
                   width: 98,
@@ -159,12 +166,13 @@ class OrderList extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 25),
                   Text(
                     menuName,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       const Icon(
@@ -182,7 +190,7 @@ class OrderList extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 4),
                   Text(
                     time,
                     style: const TextStyle(
@@ -190,7 +198,7 @@ class OrderList extends StatelessWidget {
                         color: Color(0xffB3B3B3),
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       const Icon(

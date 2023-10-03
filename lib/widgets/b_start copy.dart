@@ -43,10 +43,6 @@ class MyContainer extends StatelessWidget {
           children: [
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 10, bottom: 5),
-                  child: ClipOvalImage(),
-                ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,22 +81,6 @@ class MyContainer extends StatelessWidget {
             ),
             Positioned(top: 15, left: 244, child: stateButton()),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ClipOvalImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ClipOval(
-        child: Image.asset(
-          'assets/icon/cafeteria.jpeg',
-          width: 110.0,
-          height: 110.0,
-          fit: BoxFit.cover,
         ),
       ),
     );
@@ -183,14 +163,26 @@ class bContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 5, bottom: 5),
-                  child: ClipOvalImage(),
-                ),
               ],
             ),
             Positioned(top: 15, left: 15, child: stateButton()),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ClipOvalImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ClipOval(
+        child: Image.asset(
+          'assets/icon/cafeteria.jpeg',
+          width: 112.0,
+          height: 112.0,
+          fit: BoxFit.cover,
         ),
       ),
     );
@@ -224,3 +216,5 @@ class stateButton extends StatelessWidget {
     );
   }
 }
+
+//
