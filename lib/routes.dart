@@ -15,10 +15,13 @@ import 'screens/onboarding.dart';
 import 'screens/order.dart';
 import 'screens/order_list.dart';
 import 'screens/view_reviews.dart';
+import 'screens/first.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/first':
+        return MaterialPageRoute(builder: (_) => const firstScreeon());
       case '/start':
         return MaterialPageRoute(builder: (_) => const StartScreen());
       case '/category':

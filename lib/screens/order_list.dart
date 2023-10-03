@@ -24,7 +24,6 @@ class _OrderListScreenState extends State<OrderListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const infoAppBar(title: 'Order List'),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
@@ -53,7 +52,6 @@ class _OrderListScreenState extends State<OrderListScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const StartBottomBox(initialIndex: 2),
     );
   }
 }

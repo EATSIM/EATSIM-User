@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_info.dart';
+import '../widgets/b_main.dart';
 import '../widgets/d_profile_widget.dart';
 
 class ChangeInfoPersonalScreen extends StatefulWidget {

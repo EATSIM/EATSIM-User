@@ -32,7 +32,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             size: 26,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/start');
+            Navigator.pushReplacementNamed(context, '/first');
           },
         ),
       ),
