@@ -55,7 +55,7 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
             size: 25,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/first');
+            Navigator.pushNamed(context, '/first');
           },
         ),
       ),
@@ -64,4 +64,65 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(70.0);
+}
+
+//매뉴 앱바
+class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String cafeteriaName;
+
+  MenuAppBar({Key? key, required this.cafeteriaName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text('대구가톨릭대학교 $cafeteriaName'),
+      titleTextStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 17,
+        color: Colors.black,
+      ),
+      elevation: 0,
+      backgroundColor: Colors.white,
+      leading: IconButton(
+        icon: const Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+          size: 26,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+class OrderAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+
+  const OrderAppBar({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(
+        title,
+        style: const TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      centerTitle: true,
+      backgroundColor: const Color(0xFFF7AF48),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(15),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60.0);
 }

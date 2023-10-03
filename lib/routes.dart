@@ -52,7 +52,9 @@ class AppRoutes {
       case '/membership':
         return MaterialPageRoute(builder: (_) => const MembershipScreen());
       case '/menu':
-        return MaterialPageRoute(builder: (_) => const MenuScreen());
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => MenuScreen(cafeteriaName: args['cafeteriaName']));
       case '/onboarding':
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case '/order':

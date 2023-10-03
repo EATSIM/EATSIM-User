@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_info.dart';
+import '../widgets/d_order_list_widget.dart';
 
 class OrderListScreen extends StatefulWidget {
   const OrderListScreen({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Food extends StatelessWidget {
-  Food({Key? key}) : super(key: key);
+  final List<String> food;
+  final List<String> price;
 
-  final List<String> food = ['김치찌개', '된장찌개', '부대찌개', '칼국수'];
-  final List<String> price = ['6,000', '6,000', '6,000', '6,000'];
+  Food({Key? key, required this.food, required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,10 @@ class Food extends StatelessWidget {
         if (endIndex > food.length) {
           endIndex = food.length;
         }
-
         return Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 중앙 정렬
+              mainAxisAlignment: MainAxisAlignment.start, // 중앙 정렬
               children: [
                 for (int i = startIndex; i < endIndex; i++)
                   Container(

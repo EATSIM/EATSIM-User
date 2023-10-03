@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import '../screens/meun.dart';
 
 class CateBox extends StatelessWidget {
-  CateBox({Key? key}) : super(key: key);
+  final String cafeteriaName;
 
-  final List<String> menu = ['즐겨찾기', '한식', '양식', '분식', '중식'];
+  CateBox({Key? key, required this.cafeteriaName}) : super(key: key);
+
+  final List<String> category = ['즐겨찾기', '한식', '양식', '분식', '중식'];
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,9 @@ class CateBox extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MenuScreen(),
+            builder: (context) => MenuScreen(
+              cafeteriaName: cafeteriaName,
+            ),
           ),
         );
       },
@@ -25,9 +29,9 @@ class CateBox extends StatelessWidget {
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 10.0,
           ),
-          itemCount: menu.length,
+          itemCount: category.length,
           itemBuilder: (context, index) {
-            final item = menu[index];
+            final item = category[index];
             if (index == 0) {
               return Container(
                 width: 100,

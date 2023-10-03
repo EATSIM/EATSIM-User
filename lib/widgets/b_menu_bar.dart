@@ -9,31 +9,51 @@ class TopMenuBar extends StatefulWidget {
 }
 
 class _MenuBarState extends State<TopMenuBar> {
-  final List<String> menu = ['즐겨찾기', '한식', '양식', '분식', '중식'];
+  final List<String> menu = ['즐겨찾기', '한식', '중식'];
 
-  int selectedIndex = 0;
+  final List<List<String>> foodLists = [
+    ['즐겨찾기1', '즐겨찾기2'],
+    ['김치찌개', '된장찌개', '부대찌개', '칼국수'],
+    ['중식1', '중식2', '중식3']
+  ];
+
+  final List<List<String>> priceLists = [
+    ['1,000', '1,500'],
+    ['6,000', '6,000', '6,000', '6,000'],
+    ['5,000', '5,500', '5,500']
+  ];
+
+  late List<Widget> tabContents;
+
+  @override
+  void initState() {
+    super.initState();
+    tabContents = [
+      for (int i = 0; i < foodLists.length; i++)
+        Food(food: foodLists[i], price: priceLists[i])
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: menu.length,
-      initialIndex: selectedIndex,
       child: Column(
         children: [
           Container(
-            color: Color(0xFFF7AF48), // TabBar 전체의 배경 색상
+            color: Color(0xFFF7AF48),
             child: TabBar(
               isScrollable: false,
-              indicatorColor: Colors.white, // 선택된 항목의 밑줄 색상
-              indicatorWeight: 3.0, // 선택된 항목의 밑줄 굵기
+              indicatorColor: Colors.white,
+              indicatorWeight: 3.0,
               tabs: menu.map((item) => Tab(text: item)).toList(),
-              labelColor: Colors.white, // 선택된 항목의 글자 색상
+              labelColor: Colors.white,
               unselectedLabelColor: Colors.grey,
-              onTap: (index) {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
+            ),
+          ),
+          Flexible(
+            child: TabBarView(
+              children: tabContents,
             ),
           ),
         ],
