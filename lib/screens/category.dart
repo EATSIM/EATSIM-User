@@ -4,7 +4,8 @@ import '../widgets/b_category.dart';
 class CategoryScreen extends StatefulWidget {
   final String cafeteriaName;
 
-  const CategoryScreen({Key? key, required this.cafeteriaName}) : super(key: key);
+  const CategoryScreen({Key? key, required this.cafeteriaName})
+      : super(key: key);
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();

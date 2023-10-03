@@ -29,7 +29,8 @@ class AppRoutes {
       case '/cellphone':
         return MaterialPageRoute(builder: (_) => const CellphoneScreen());
       case '/change_info_personal':
-        return MaterialPageRoute(builder: (_) => const ChangeInfoPersonalScreen());
+        return MaterialPageRoute(
+            builder: (_) => const ChangeInfoPersonalScreen());
       case '/change_school':
         return MaterialPageRoute(builder: (_) => const ChangeSchoolScreen());
       case '/create_review':
