@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/b_menu_bar.dart';
-import '../widgets/b_food_info.dart';
+import '../widgets/b_food.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key, required}) : super(key: key);

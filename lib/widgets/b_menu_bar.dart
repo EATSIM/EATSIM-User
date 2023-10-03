@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_food_info.dart';
 
 class TopMenuBar extends StatefulWidget {
   TopMenuBar({Key? key}) : super(key: key);
