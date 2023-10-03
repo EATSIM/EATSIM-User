@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/meun.dart';
 
 class CateBox extends StatelessWidget {
   CateBox({Key? key}) : super(key: key);
@@ -8,7 +9,14 @@ class CateBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MenuScreen(),
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: GridView.builder(
