@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_info.dart';
 import '../widgets/d_profile_widget.dart';
 
 class InfoPersonalScreen extends StatefulWidget {
@@ -13,7 +12,6 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const infoAppBar(title: 'Profile'),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -97,7 +95,6 @@ class _InfoPersonalScreenState extends State<InfoPersonalScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const StartBottomBox(initialIndex: 3),
     );
   }
 }

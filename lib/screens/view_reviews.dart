@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_info.dart';
 import '../widgets/d_view_review_widget.dart';
 
 class ViewReviewsScreen extends StatefulWidget {
@@ -16,7 +15,6 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
-      appBar: const infoAppBar(title: 'REVIEW'),
       body: Column(
         children: [
           Column(
@@ -46,7 +44,6 @@ class _ViewReviewsScreenState extends State<ViewReviewsScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: const StartBottomBox(initialIndex: 1),
     );
   }
 }

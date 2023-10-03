@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_info.dart';
+import '../widgets/b_main.dart';
 import '../widgets/d_create_review_widget.dart';
 
 class CreateReviewScreen extends StatefulWidget {
@@ -197,7 +197,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                   const SizedBox(height: 20),
                   ReviewEndButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/start');
+                      Navigator.pushNamed(context, '/first');
                     },
                   )
                 ],
