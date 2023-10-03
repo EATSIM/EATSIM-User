@@ -4,7 +4,8 @@ import '../widgets/b_category.dart';
 class CategoryScreen extends StatefulWidget {
   final String cafeteriaName;
 
-  const CategoryScreen({Key? key, required this.cafeteriaName}) : super(key: key);
+  const CategoryScreen({Key? key, required this.cafeteriaName})
+      : super(key: key);
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
@@ -14,11 +15,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('대구가톨릭대학교 ${widget.cafeteriaName}'),
         titleTextStyle: const TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: 17,
           color: Colors.black,
         ),
         elevation: 0,
@@ -27,7 +29,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
-            size: 30,
+            size: 26,
           ),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/start');
@@ -35,7 +37,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
         child: CateBox(),
       ),
     );
