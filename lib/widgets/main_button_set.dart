@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-class BucketBtn extends StatelessWidget {
+class MainButtonSet extends StatelessWidget {
   final VoidCallback onPressed;
+  final String text;
+  final Color backgroundColor;
 
-  const BucketBtn({
+  const MainButtonSet({
     required this.onPressed,
+    required this.text,
+    this.backgroundColor = const Color(0xFFF7AF48),
     Key? key,
   }) : super(key: key);
 
@@ -16,15 +20,15 @@ class BucketBtn extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFF7AF48),
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            '장바구니 담기',
-            style: TextStyle(
+            text,
+            style: const TextStyle(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

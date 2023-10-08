@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_main.dart';
-import '../widgets/d_profile_widget.dart';
+import '../widgets/app_bar_set.dart';
+import 'package:eat_sim/widgets/main_button_set.dart';
+import '../widgets/16_change_info_personal_widgets/profiles_box.dart';
 
 class ChangeInfoPersonalScreen extends StatefulWidget {
   const ChangeInfoPersonalScreen({Key? key}) : super(key: key);
@@ -47,10 +48,12 @@ class _ChangeInfoPersonalScreenState extends State<ChangeInfoPersonalScreen> {
             left: 0,
             right: 0,
             child: Center(
-              child: LogOutButton(
+              child: MainButtonSet(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/login');
                 },
+                text: '로그아웃',
+                backgroundColor: Colors.white,
               ),
             ),
           ),

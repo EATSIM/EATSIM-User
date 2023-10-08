@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
 import 'checkbox.dart';
-import '../widgets/logo.dart';
-import '../buttons/login_button.dart';
+import 'logo.dart';
+import 'main_button_set.dart';
 import 'textinput_widget.dart';
 
 class LoginWidget extends StatelessWidget {
   final bool autoLogin;
   final Function(bool)? onAutoLoginChanged;
 
-  const LoginWidget({super.key, 
+  const LoginWidget({
+    super.key,
     required this.autoLogin,
     required this.onAutoLoginChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 30),
           const LogoWidget(),
-          _buildInputField("ID", fontSize: 16.0, color: const Color(0xFFAFAFAF)),
+          _buildInputField("ID",
+              fontSize: 16.0, color: const Color(0xFFAFAFAF)),
           _buildInputField("Password",
               fontSize: 16.0, color: const Color(0xFFAFAFAF), isPassword: true),
           const SizedBox(height: 20),
-          LoginButton(
+          MainButtonSet(
             onPressed: () {
-              Navigator.pushNamed(context, '/start');
+              Navigator.pushNamed(context, '/first');
             },
+            text: 'Login',
           ),
           const SizedBox(height: 20),
           GestureDetector(

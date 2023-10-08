@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_start.dart';
-import '../widgets/c_order.dart';
+import '../widgets/b_restaurant.dart';
+import '../widgets/11_order_widgets/shopping_cart.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({Key? key}) : super(key: key);
+class RestaurantScreen extends StatefulWidget {
+  const RestaurantScreen({Key? key}) : super(key: key);
 
   @override
-  _StartScreenState createState() => _StartScreenState();
+  _RestaurantScreenState createState() => _RestaurantScreenState();
 }
 
-class _StartScreenState extends State<StartScreen> {
+class _RestaurantScreenState extends State<RestaurantScreen> {
   final List<String> cafeteriaNames = [
     '제 1 식당',
     '제 2 식당',

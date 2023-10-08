@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/info_meun.dart';
+import '../screens/meun_info.dart';
 
 class Food extends StatelessWidget {
   final List<String> foodNames;

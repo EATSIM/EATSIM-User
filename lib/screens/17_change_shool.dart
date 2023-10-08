@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_main.dart';
-import '../widgets/d_change_school.dart';
+import '../widgets/app_bar_set.dart';
+import '../widgets/17_change_school_widgets/school_search_box.dart';
+import '../widgets/17_change_school_widgets/school_box.dart';
 
 class ChangeSchoolScreen extends StatefulWidget {
   const ChangeSchoolScreen({Key? key}) : super(key: key);

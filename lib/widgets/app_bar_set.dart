@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 //main 앱바
-class StartAppBar extends StatelessWidget implements PreferredSizeWidget {
+class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  const StartAppBar({Key? key, required this.title}) : super(key: key);
+  const RestaurantAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +100,7 @@ class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
+//주문 앱바
 class OrderAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 

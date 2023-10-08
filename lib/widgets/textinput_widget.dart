@@ -5,12 +5,15 @@ class TextInputWidget extends StatelessWidget {
   final double? fontSize;
   final Color? color;
   final bool isPassword;
+  final TextEditingController? controller;
 
-  const TextInputWidget({super.key, 
+  const TextInputWidget({
+    super.key,
     required this.labelText,
     this.fontSize,
     this.color,
     this.isPassword = false,
+    this.controller,
   });
 
   @override
@@ -18,6 +21,7 @@ class TextInputWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 20),
       child: TextField(
+        controller: controller,
         obscureText: isPassword,
         decoration: InputDecoration(
           labelText: labelText,

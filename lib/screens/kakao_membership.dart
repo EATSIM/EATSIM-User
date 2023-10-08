@@ -1,10 +1,10 @@
+import 'package:eat_sim/models/school_name.dart';
 import 'package:flutter/material.dart';
-import '../buttons/membership_button.dart';
+import '../widgets/main_button_set.dart';
 import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
 import '../widgets/logo.dart';
 import '../widgets/school_list_widget.dart';
-import 'school_list.dart';
 
 class KakaoMembershipScreen extends StatefulWidget {
   const KakaoMembershipScreen({Key? key}) : super(key: key);
@@ -14,8 +14,9 @@ class KakaoMembershipScreen extends StatefulWidget {
 }
 
 class _KakaoMembershipScreenState extends State<KakaoMembershipScreen> {
-  String? _selectedSchool;
-  final List<String> _schoolList = schoolList;
+  late int _selectedSchool;
+
+  Future<List<School>>? _schoolNamesFuture;
   String _searchQuery = '';
   bool _isListVisible = false;
 
@@ -68,32 +69,45 @@ class _KakaoMembershipScreenState extends State<KakaoMembershipScreen> {
                 const LogoWidget(),
                 _buildTextField('닉네임'),
                 _buildTextField('전화번호'),
-                SchoolSearchWidget(
-                  controller: _schoolSearchController,
-                  onSearch: (value) {
-                    setState(() {
-                      _searchQuery = value;
-                      _isListVisible = _searchQuery.isNotEmpty;
-                    });
-                  },
-                  isListVisible: _isListVisible,
-                  filteredSchools: _schoolList
-                      .where((school) => school
-                          .toLowerCase()
-                          .contains(_searchQuery.toLowerCase()))
-                      .toList(),
-                  onSchoolSelected: (school) {
-                    setState(() {
-                      _selectedSchool = school;
-                      _searchQuery = _selectedSchool ?? '';
-                      _isListVisible = false;
-                      _schoolSearchController.text = _selectedSchool ?? '';
-                    });
+                FutureBuilder<List<School>>(
+                  future: _schoolNamesFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        return SchoolSearchWidget(
+                          controller: _schoolSearchController,
+                          onSearch: (value) {
+                            setState(() {
+                              _searchQuery = value;
+                              _isListVisible = _searchQuery.isNotEmpty;
+                            });
+                          },
+                          isListVisible: _isListVisible,
+                          filteredSchools: snapshot.data!
+                              .where((school) => school.schoolName
+                                  .toLowerCase()
+                                  .contains(_searchQuery.toLowerCase()))
+                              .toList(),
+                          onSchoolSelected: (school) {
+                            setState(() {
+                              _selectedSchool = school.schoolIdx;
+                              _schoolSearchController.text = school.schoolName;
+                              _isListVisible = false;
+                            });
+                          },
+                        );
+                      }
+                    } else {
+                      return CircularProgressIndicator(); // 로딩 중...
+                    }
                   },
                 ),
                 const SizedBox(height: 170),
-                MembershipButton(
+                MainButtonSet(
                   onPressed: _onMembershipButtonPressed,
+                  text: '회원가입',
                 ),
                 const SizedBox(height: 30),
               ],

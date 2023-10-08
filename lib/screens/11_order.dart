@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_main.dart';
-import '../widgets/c_order.dart';
+import '../widgets/app_bar_set.dart';
+import '../widgets/11_order_widgets/list_order.dart';
+import '../widgets/11_order_widgets/total_pay_content.dart';
+import '../widgets/11_order_widgets/pay_button.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({Key? key}) : super(key: key);

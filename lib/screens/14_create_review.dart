@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_main.dart';
-import '../widgets/d_create_review_widget.dart';
+import '../widgets/app_bar_set.dart';
+import '../widgets/14_create_review_widgets/review_choice_button.dart';
+import '../widgets/14_create_review_widgets/star_rating.dart';
+import '../widgets/main_button_set.dart';
+import '../widgets/14_create_review_widgets/review_text_box.dart';
+import '../widgets/14_create_review_widgets/review_text_field.dart';
+import '../widgets/14_create_review_widgets/selection_box.dart';
 
 class CreateReviewScreen extends StatefulWidget {
   final String menuName;
@@ -195,10 +200,11 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                   const SizedBox(height: 10),
                   const ReviewTextBox(),
                   const SizedBox(height: 20),
-                  ReviewEndButton(
+                  MainButtonSet(
                     onPressed: () {
                       Navigator.pushNamed(context, '/first');
                     },
+                    text: '리뷰 등록하기',
                   )
                 ],
               ),

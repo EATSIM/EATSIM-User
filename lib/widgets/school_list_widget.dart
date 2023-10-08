@@ -1,13 +1,15 @@
+import 'package:eat_sim/models/school_name.dart';
 import 'package:flutter/material.dart';
 
 class SchoolSearchWidget extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String> onSearch;
   final bool isListVisible;
-  final List<String> filteredSchools;
-  final Function(String) onSchoolSelected;
+  final List<School> filteredSchools;
+  final Function(School) onSchoolSelected;
 
-  const SchoolSearchWidget({super.key, 
+  const SchoolSearchWidget({
+    super.key,
     required this.controller,
     required this.onSearch,
     required this.isListVisible,
@@ -81,7 +83,7 @@ class SchoolSearchWidget extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                school,
+                school.schoolName,
                 style: const TextStyle(
                   fontSize: 13.0,
                   letterSpacing: -0.5,

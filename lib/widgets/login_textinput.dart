@@ -1,10 +1,10 @@
+import 'package:eat_sim/models/school_name.dart';
 import 'package:flutter/material.dart';
-import '../buttons/membership_button.dart';
-import '../screens/school_list.dart';
+import 'main_button_set.dart';
 import '../widgets/checkbox.dart';
 import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
-import '../widgets/logo.dart';
+import 'logo.dart';
 import '../widgets/school_list_widget.dart';
 
 class LoginTextInputWidget extends StatefulWidget {
@@ -15,10 +15,10 @@ class LoginTextInputWidget extends StatefulWidget {
 }
 
 class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
-  String? _selectedSchool;
+  late int _selectedSchool;
   bool _personalInfoChecked = false;
   bool _serviceTermsChecked = false;
-  final List<String> _schoolList = schoolList;
+  final List<School> _schoolList = [];
   String _searchQuery = '';
   bool _isListVisible = false;
 
@@ -68,7 +68,8 @@ class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
   void _onMembershipButtonPressed() {
     if (_personalInfoChecked &&
         _serviceTermsChecked &&
-        _schoolSearchController.text.isNotEmpty) {
+        _schoolSearchController.text.isNotEmpty &&
+        _selectedSchool != null) {
       _showCompletionDialog();
     } else {
       _showIncompleteInfoDialog();
@@ -96,16 +97,12 @@ class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
             });
           },
           isListVisible: _isListVisible,
-          filteredSchools: _schoolList
-              .where((school) =>
-                  school.toLowerCase().contains(_searchQuery.toLowerCase()))
-              .toList(),
+          filteredSchools: _schoolList,
           onSchoolSelected: (school) {
             setState(() {
-              _selectedSchool = school;
-              _searchQuery = _selectedSchool ?? '';
+              _selectedSchool = school.schoolIdx;
+              _schoolSearchController.text = school.schoolName;
               _isListVisible = false;
-              _schoolSearchController.text = _selectedSchool ?? '';
             });
           },
         ),
@@ -130,8 +127,9 @@ class _LoginTextInputWidgetState extends State<LoginTextInputWidget> {
           },
         ),
         const SizedBox(height: 30),
-        MembershipButton(
+        MainButtonSet(
           onPressed: _onMembershipButtonPressed,
+          text: '회원가입',
         ),
         const SizedBox(height: 30),
       ],

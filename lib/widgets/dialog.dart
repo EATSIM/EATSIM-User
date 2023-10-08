@@ -35,7 +35,7 @@ class CompletionDialog extends StatelessWidget {
                 minimumSize: const Size(280, 40), // Set minimum width
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/start');
+                Navigator.pushNamed(context, '/login');
               },
               child: const Text(
                 '완료',

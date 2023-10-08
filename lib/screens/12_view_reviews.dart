@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/d_view_review_widget.dart';
+import '../widgets/12_view_review_widgets/review_switch.dart';
+import '../widgets/12_view_review_widgets/search_button.dart';
+import '../widgets/12_view_review_widgets/review_box.dart';
 
 class ViewReviewsScreen extends StatefulWidget {
   const ViewReviewsScreen({Key? key}) : super(key: key);

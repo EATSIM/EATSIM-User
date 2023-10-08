@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/b_main.dart';
-import 'start.dart';
-import 'order_list.dart';
-import 'view_reviews.dart';
-import 'info_personal.dart';
+import '../widgets/app_bar_set.dart';
+import 'restaurant.dart';
+import '13_order_list.dart';
+import '12_view_reviews.dart';
+import '15_info_personal.dart';
 
 class firstScreeon extends StatefulWidget {
   const firstScreeon({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _firstScreeonState extends State<firstScreeon> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    StartScreen(),
+    RestaurantScreen(),
     ViewReviewsScreen(),
     OrderListScreen(),
     InfoPersonalScreen(),
@@ -50,14 +50,14 @@ class _firstScreeonState extends State<firstScreeon> {
       case 3:
         return const infoAppBar(title: 'Profile');
       default:
-        return const StartAppBar(title: '대구가톨릭대학교');
+        return const RestaurantAppBar(title: '대구가톨릭대학교');
     }
   }
 }
 
 class StartBottomBox extends StatefulWidget {
   final int initialIndex;
-  final ValueChanged<int> onTap; // 선택된 항목의 인덱스를 반환하는 콜백
+  final ValueChanged<int> onTap;
 
   const StartBottomBox({Key? key, this.initialIndex = 0, required this.onTap})
       : super(key: key);

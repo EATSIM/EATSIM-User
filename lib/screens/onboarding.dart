@@ -21,12 +21,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
+}
 
-  Widget logo() {
-    return Image.asset(
-      'assets/icon/logo.png',
-      height: 300,
-      width: 300,
-    );
-  }
+Widget logo() {
+  return Image.asset(
+    'assets/icon/logo.png',
+    height: 300,
+    width: 300,
+  );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../buttons/bucket_button.dart';
+import 'main_button_set.dart';
+import '12_view_review_widgets/review_box.dart';
 
 class InfoTopBar extends StatefulWidget {
   InfoTopBar({Key? key}) : super(key: key);
@@ -171,8 +172,9 @@ class _InfoTopBarState extends State<InfoTopBar> {
             ],
           ),
           SizedBox(height: 150),
-          BucketBtn(
+          MainButtonSet(
             onPressed: () {},
+            text: '장바구니 담기',
           ),
         ],
       ),
@@ -182,7 +184,7 @@ class _InfoTopBarState extends State<InfoTopBar> {
   Widget _buildSecondTab() {
     return Container(
       padding: EdgeInsets.all(16.0),
-      child: Text('음식 리뷰'),
+      child: ReviewBox(),
     );
   }
 }

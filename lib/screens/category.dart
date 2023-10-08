@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/b_category.dart';
-import '../widgets/b_main.dart';
+import '../widgets/app_bar_set.dart';
 
 class CategoryScreen extends StatefulWidget {
   final String cafeteriaName;
