@@ -7,6 +7,7 @@ import 'restaurant.dart';
 import '13_order_list.dart';
 import '12_view_reviews.dart';
 import '15_info_personal.dart';
+import '../models/school_name.dart';
 
 class firstScreeon extends StatefulWidget {
   const firstScreeon({Key? key}) : super(key: key);
@@ -50,9 +51,11 @@ class _firstScreeonState extends State<firstScreeon> {
     if (userInfo != null) {
       setState(() => _userInfo = userInfo);
       if (_userInfo!['schoolIdx'] != null) {
-        final schoolName = await _fetchSchoolName(_userInfo!['schoolIdx']);
-        if (schoolName != null) {
-          setState(() => _schoolName = schoolName);
+        final school = await _fetchSchoolName(
+            _userInfo!['schoolIdx'], token); // changed to 'school'
+        if (school != null) {
+          setState(() => _schoolName =
+              school.schoolName); // get the schoolName from the School model
         }
       }
     }
@@ -73,12 +76,17 @@ class _firstScreeonState extends State<firstScreeon> {
     }
   }
 
-  Future<String?> _fetchSchoolName(int schoolIdx) async {
+  Future<School?> _fetchSchoolName(int schoolIdx, String token) async {
     final url = "http://10.0.2.2:8080/main/schoolname/$schoolIdx";
-    final response = await _getRequest(url);
+    final headers = {
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer $token",
+    };
+    final response = await _getRequest(url, headers);
     if (response.statusCode == 200) {
       final responseBody = json.decode(response.body);
-      return responseBody['schoolName'];
+      final school = School.fromJson(responseBody);
+      return school;
     } else {
       print("Error fetching school name: ${response.body}");
       return null;
