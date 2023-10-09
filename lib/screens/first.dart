@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import '../widgets/app_bar_set.dart';
 import 'restaurant.dart';
 import '13_order_list.dart';
@@ -14,6 +17,8 @@ class firstScreeon extends StatefulWidget {
 
 class _firstScreeonState extends State<firstScreeon> {
   int _selectedIndex = 0;
+  Map<String, dynamic>? _userInfo;
+  String? _schoolName;
 
   final List<Widget> _pages = [
     RestaurantScreen(),
@@ -23,12 +28,86 @@ class _firstScreeonState extends State<firstScreeon> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _initialize();
+  }
+
+  _initialize() async {
+    final token = await _fetchToken();
+    if (token != null) {
+      await _fetchAndSetUserInfo(token);
+    }
+  }
+
+  Future<String?> _fetchToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('accessToken');
+  }
+
+  Future<void> _fetchAndSetUserInfo(String token) async {
+    final userInfo = await _fetchUserInfo(token);
+    if (userInfo != null) {
+      setState(() => _userInfo = userInfo);
+      if (_userInfo!['schoolIdx'] != null) {
+        final schoolName = await _fetchSchoolName(_userInfo!['schoolIdx']);
+        if (schoolName != null) {
+          setState(() => _schoolName = schoolName);
+        }
+      }
+    }
+  }
+
+  Future<Map<String, dynamic>?> _fetchUserInfo(String token) async {
+    final url = "http://10.0.2.2:8080/main/userinfo";
+    final headers = {
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer $token",
+    };
+    final response = await _getRequest(url, headers);
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      print("Error fetching user info: ${response.body}");
+      return null;
+    }
+  }
+
+  Future<String?> _fetchSchoolName(int schoolIdx) async {
+    final url = "http://10.0.2.2:8080/main/schoolname/$schoolIdx";
+    final response = await _getRequest(url);
+    if (response.statusCode == 200) {
+      final responseBody = json.decode(response.body);
+      return responseBody['schoolName'];
+    } else {
+      print("Error fetching school name: ${response.body}");
+      return null;
+    }
+  }
+
+  Future<http.Response> _getRequest(String url,
+      [Map<String, String>? headers]) async {
+    print('Fetching data from URL: $url');
+    final response = await http.get(Uri.parse(url), headers: headers);
+    print('Response status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    return response;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
+      body: Column(
+        children: [
+          _buildUserInfoDisplay(),
+          Expanded(
+            child: IndexedStack(
+              index: _selectedIndex,
+              children: _pages,
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: StartBottomBox(
         initialIndex: _selectedIndex,
@@ -41,7 +120,31 @@ class _firstScreeonState extends State<firstScreeon> {
     );
   }
 
+  Widget _buildUserInfoDisplay() {
+    if (_userInfo == null) {
+      return Container(); // 빈 컨테이너 (아무것도 표시하지 않음)
+    } else {
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min, // 컨텐츠 크기만큼만 공간을 차지하게 설정
+          children: <Widget>[
+            Text("ID: ${_userInfo?['idx'] ?? 'N/A'}"),
+            Text("User ID: ${_userInfo?['userID'] ?? 'N/A'}"),
+            Text("User Name: ${_userInfo?['userName'] ?? 'N/A'}"),
+            Text("Call Number: ${_userInfo?['userCallNumber'] ?? 'N/A'}"),
+            Text("schoolIdx: ${_userInfo?['schoolIdx'] ?? 'N/A'}"),
+            Text("Created At: ${_userInfo?['createdAt'] ?? 'N/A'}"),
+            Text("Updated At: ${_userInfo?['updatedAt'] ?? 'N/A'}"),
+          ],
+        ),
+      );
+    }
+  }
+
   PreferredSizeWidget _buildAppBar() {
+    String title = _schoolName ?? '대구가톨릭대학교';
     switch (_selectedIndex) {
       case 1:
         return const infoAppBar(title: 'REVIEW');
@@ -50,7 +153,7 @@ class _firstScreeonState extends State<firstScreeon> {
       case 3:
         return const infoAppBar(title: 'Profile');
       default:
-        return const RestaurantAppBar(title: '대구가톨릭대학교');
+        return RestaurantAppBar(title: title);
     }
   }
 }

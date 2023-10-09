@@ -36,7 +36,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
   String _searchQuery = '';
   bool _isListVisible = false;
   Future<List<School>>? _schoolNamesFuture;
-  List<int>? _fetchedSchoolNames;
 
   final TextEditingController _schoolSearchController = TextEditingController();
 
@@ -61,17 +60,21 @@ class _MembershipScreenState extends State<MembershipScreen> {
   }
 
   _onMembershipButtonPressed2() async {
-    var url = Uri.parse('http://10.0.2.2:8080/main/login');
+    var url = Uri.parse('http://10.0.2.2:8080/main/membership');
 
     var headers = {
       'Content-Type': 'application/json; charset=utf-8',
     };
+
+    print("Attempting to register with URL: $url");
 
     // phoneNumber의 뒤에서 8자리를 추출하고 long 타입으로 변환
     var last8Digits = phoneNumber!.length >= 8
         ? phoneNumber?.substring(phoneNumber!.length - 8)
         : phoneNumber;
     var phoneNumberLong = int.tryParse(last8Digits!);
+
+    print("Parsed phone number: $phoneNumberLong");
 
     var body = json.encode({
       'id': _idController.text,
@@ -83,12 +86,18 @@ class _MembershipScreenState extends State<MembershipScreen> {
       'school': _selectedSchool
     });
 
+    print("Sending registration data: $body");
+
     var response = await http.post(url, headers: headers, body: body);
+
+    print("HTTP Response status code: ${response.statusCode}");
 
     if (response.statusCode == 200) {
       // 일반적으로 HTTP 200은 성공을 의미합니다.
+      print("Registration successful!");
       // 성공적으로 등록됐을 때의 로직
     } else {
+      print("Error during registration: ${response.body}");
       // 오류 발생 시 처리
     }
   }
@@ -153,18 +162,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () async {
-                    var result = await fetchSchools();
-                    print('Fetched Schools: $result');
-                    setState(() {
-                      _fetchedSchoolNames =
-                          result.map((school) => school.schoolIdx).toList();
-                    });
-                  },
-                  child: Text('Fetch School Names'),
-                ),
-                Text(_fetchedSchoolNames?.join(', ') ?? 'No data fetched'),
                 const LogoWidget(),
                 buildTextField(labelText: 'ID', controller: _idController),
                 buildTextField(labelText: '이름', controller: _nameController),
