@@ -7,8 +7,8 @@ Future<List<School>> fetchSchools() async {
     'Content-Type': 'application/json; charset=utf-8',
   };
 
-  final response = await http.get(Uri.parse('http://10.0.2.2:8080/main/school'),
-      headers: headers);
+  final response = await http
+      .get(Uri.parse('http://127.0.0.1:8080/main/school'), headers: headers);
 
   if (response.statusCode == 200) {
     print('Status Code: ${response.statusCode}');

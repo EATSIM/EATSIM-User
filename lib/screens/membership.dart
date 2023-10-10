@@ -60,7 +60,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
   }
 
   _onMembershipButtonPressed2() async {
-    var url = Uri.parse('http://10.0.2.2:8080/main/membership');
+    var url = Uri.parse('http://127.0.0.1:8080/main/membership');
 
     var headers = {
       'Content-Type': 'application/json; charset=utf-8',
