@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../server/school_name.dart';
 
+
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key, required this.phoneNumber})
       : super(key: key);
@@ -59,8 +60,8 @@ class _MembershipScreenState extends State<MembershipScreen> {
   }
 
   _onMembershipButtonPressed2() async {
-    var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    var url = Uri.parse('http://$host:8080/main/membership');
+   var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  var url = Uri.parse('http://$host:8080/main/membership');
 
     var headers = {
       'Content-Type': 'application/json; charset=utf-8',
