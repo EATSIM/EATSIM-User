@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 import '../models/school_name.dart';
 
 Future<List<School>> fetchSchools() async {
@@ -7,8 +8,10 @@ Future<List<School>> fetchSchools() async {
     'Content-Type': 'application/json; charset=utf-8',
   };
 
-  final response = await http
-      .get(Uri.parse('http://127.0.0.1:8080/main/school'), headers: headers);
+  var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  var url = Uri.parse('http://$host:8080/main/school');
+
+  final response = await http.get(url, headers: headers);
 
   if (response.statusCode == 200) {
     print('Status Code: ${response.statusCode}');

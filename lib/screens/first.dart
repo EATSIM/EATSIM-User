@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 import '../widgets/app_bar_set.dart';
 import 'restaurant.dart';
 import '13_order_list.dart';
@@ -27,6 +28,11 @@ class _firstScreeonState extends State<firstScreeon> {
     OrderListScreen(),
     InfoPersonalScreen(),
   ];
+
+ String getBaseUrl() {  // 추가: 기본 URL을 반환하는 메서드
+    var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+    return 'http://$host:8080';
+  }
 
   @override
   void initState() {
@@ -62,7 +68,7 @@ class _firstScreeonState extends State<firstScreeon> {
   }
 
   Future<Map<String, dynamic>?> _fetchUserInfo(String token) async {
-    final url = "http://10.0.2.2:8080/main/userinfo";
+    final url = "${getBaseUrl()}/main/userinfo"; 
     final headers = {
       "Content-Type": "application/json; charset=UTF-8",
       "Authorization": "Bearer $token",
@@ -77,7 +83,7 @@ class _firstScreeonState extends State<firstScreeon> {
   }
 
   Future<School?> _fetchSchoolName(int schoolIdx, String token) async {
-    final url = "http://10.0.2.2:8080/main/schoolname/$schoolIdx";
+    final url = "${getBaseUrl()}/main/schoolname/$schoolIdx"; 
     final headers = {
       "Content-Type": "application/json; charset=UTF-8",
       "Authorization": "Bearer $token",
