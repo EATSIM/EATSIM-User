@@ -8,8 +8,9 @@ Future<List<School>> fetchSchools() async {
     'Content-Type': 'application/json; charset=utf-8',
   };
 
-  var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-  var url = Uri.parse('http://$host:8080/main/school');
+  var host = Platform.isAndroid ? '10.0.2.2' : '2479-115-143-80-38.ngrok.io';
+  var protocol = Platform.isAndroid ? 'http' : 'https';
+  var url = Uri.parse('$protocol://$host:8080/main/school');
 
   final response = await http.get(url, headers: headers);
 

@@ -29,9 +29,10 @@ class _firstScreeonState extends State<firstScreeon> {
     InfoPersonalScreen(),
   ];
 
- String getBaseUrl() {  // 추가: 기본 URL을 반환하는 메서드
-    var host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    return 'http://$host:8080';
+  String getBaseUrl() {
+    var host = Platform.isAndroid ? '10.0.2.2' : '2479-115-143-80-38.ngrok.io';
+    var protocol = Platform.isAndroid ? 'http' : 'https';
+    return '$protocol://$host:8080';
   }
 
   @override
@@ -68,7 +69,7 @@ class _firstScreeonState extends State<firstScreeon> {
   }
 
   Future<Map<String, dynamic>?> _fetchUserInfo(String token) async {
-    final url = "${getBaseUrl()}/main/userinfo"; 
+    final url = "${getBaseUrl()}/main/userinfo";
     final headers = {
       "Content-Type": "application/json; charset=UTF-8",
       "Authorization": "Bearer $token",
@@ -83,7 +84,7 @@ class _firstScreeonState extends State<firstScreeon> {
   }
 
   Future<School?> _fetchSchoolName(int schoolIdx, String token) async {
-    final url = "${getBaseUrl()}/main/schoolname/$schoolIdx"; 
+    final url = "${getBaseUrl()}/main/schoolname/$schoolIdx";
     final headers = {
       "Content-Type": "application/json; charset=UTF-8",
       "Authorization": "Bearer $token",
