@@ -4,12 +4,10 @@ import '../widgets/main_button_set.dart';
 import '../widgets/checkbox.dart';
 import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
-import '../widgets/logo.dart';
+import '../widgets/1_onboarding_widget/logo.dart';
 import '../widgets/school_list_widget.dart';
-import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import '../server/school_name.dart';
+import '../server/school_service.dart';
+import '../server/membership_server.dart';
 
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key, required this.phoneNumber})
@@ -28,7 +26,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
   final TextEditingController _pwController = TextEditingController();
   final TextEditingController _pwConfirmController = TextEditingController();
 
-  late int _selectedSchool;
+  late int selectedSchool;
 
   bool _personalInfoChecked = false;
   bool _serviceTermsChecked = false;
@@ -56,51 +54,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
     _pwController.dispose();
     _pwConfirmController.dispose();
     super.dispose();
-  }
-
-  _onMembershipButtonPressed2() async {
-    var host = Platform.isAndroid ? '10.0.2.2' : '2479-115-143-80-38.ngrok.io';
-    var protocol = Platform.isAndroid ? 'http' : 'https';
-    var url = Uri.parse('$protocol://$host:8080/main/school');
-
-    var headers = {
-      'Content-Type': 'application/json; charset=utf-8',
-    };
-
-    print("Attempting to register with URL: $url");
-
-    // phoneNumber의 뒤에서 8자리를 추출하고 long 타입으로 변환
-    var last8Digits = phoneNumber!.length >= 8
-        ? phoneNumber?.substring(phoneNumber!.length - 8)
-        : phoneNumber;
-    var phoneNumberLong = int.tryParse(last8Digits!);
-
-    print("Parsed phone number: $phoneNumberLong");
-
-    var body = json.encode({
-      'id': _idController.text,
-      'name': _nameController.text,
-      'nickname': _nicknameController.text,
-      'password': _pwController.text,
-      'passwordConfirm': _pwController.text,
-      'phoneNumber': phoneNumberLong,
-      'school': _selectedSchool
-    });
-
-    print("Sending registration data: $body");
-
-    var response = await http.post(url, headers: headers, body: body);
-
-    print("HTTP Response status code: ${response.statusCode}");
-
-    if (response.statusCode == 200) {
-      // 일반적으로 HTTP 200은 성공을 의미합니다.
-      print("Registration successful!");
-      // 성공적으로 등록됐을 때의 로직
-    } else {
-      print("Error during registration: ${response.body}");
-      // 오류 발생 시 처리
-    }
   }
 
 //이용약관 서비스 동의 checkbox
@@ -147,6 +100,16 @@ class _MembershipScreenState extends State<MembershipScreen> {
         _serviceTermsChecked &&
         _schoolSearchController.text.isNotEmpty) {
       _showCompletionDialog();
+
+      // 함수 호출 추가
+      MembershipService.onMembershipButtonPressed2(
+        phoneNumber ?? '',
+        _idController.text,
+        _nameController.text,
+        _nicknameController.text,
+        _pwController.text,
+        selectedSchool.toString(),
+      );
     } else {
       _showIncompleteInfoDialog();
     }
@@ -199,7 +162,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                               .toList(),
                           onSchoolSelected: (school) {
                             setState(() {
-                              _selectedSchool = school.schoolIdx;
+                              selectedSchool = school.schoolIdx;
                               _schoolSearchController.text = school.schoolName;
                               _isListVisible = false;
                             });
@@ -235,7 +198,6 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 MainButtonSet(
                   onPressed: () {
                     _onMembershipButtonPressed();
-                    _onMembershipButtonPressed2();
                   },
                   text: '회원가입',
                 ),

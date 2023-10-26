@@ -7,15 +7,16 @@ class OrderList extends StatelessWidget {
   final String menuName;
   final String school;
   final String time;
-  final String stars;
+  // final String stars;
 
-  const OrderList(
-      {super.key,
-      required this.imageUrl,
-      required this.menuName,
-      required this.school,
-      required this.time,
-      required this.stars});
+  const OrderList({
+    super.key,
+    required this.imageUrl,
+    required this.menuName,
+    required this.school,
+    required this.time,
+    // required this.stars,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,28 +85,28 @@ class OrderList extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        size: 15,
-                        color: Colors.yellow,
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        stars,
-                        style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     const Icon(
+                  //       Icons.star,
+                  //       size: 15,
+                  //       color: Colors.yellow,
+                  //     ),
+                  //     const SizedBox(width: 3),
+                  //     Text(
+                  //       stars,
+                  //       style: const TextStyle(
+                  //           fontSize: 12, fontWeight: FontWeight.bold),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ],
           ),
           Positioned(
             right: 0,
-            bottom: 20,
+            bottom: 10,
             child: ReviewButton(menuName: menuName),
           ),
         ],

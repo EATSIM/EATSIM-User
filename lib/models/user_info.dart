@@ -2,7 +2,7 @@ class UserDto {
   final int idx;
   final String userID;
   final String userName;
-  final String userCallNumber;
+  final int userCallNumber;
   final int schoolIdx;
   final DateTime createdAt;
   final DateTime updatedAt;

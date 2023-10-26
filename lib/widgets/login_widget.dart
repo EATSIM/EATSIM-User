@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 import 'checkbox.dart';
-import 'logo.dart';
+import '1_onboarding_widget/logo.dart';
 import 'main_button_set.dart';
 import 'textinput_widget.dart';
+import '../server/login_server.dart';
 
 class LoginWidget extends StatefulWidget {
   final bool autoLogin;
@@ -24,52 +22,21 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final TextEditingController _userIdController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void _handleLogin() async {
+    final loginService = LoginService(
+      userIdController: _userIdController,
+      passwordController: _passwordController,
+      context: context,
+    );
+    await loginService.handleLogin();
+  }
+
   @override
   void dispose() {
     _userIdController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  Future<void> _handleLogin() async {
-    final url = "http://10.0.2.2:8080/main/login";
-
-    print("Attempting to login with URL: $url");
-
-    final response = await http.post(
-      Uri.parse(url),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8", // UTF-8 설정 추가
-      },
-      body: json.encode({
-        'userID': _userIdController.text,
-        'userPassword': _passwordController.text,
-      }),
-    );
-
-    print("HTTP Response status code: ${response.statusCode}");
-
-    if (response.statusCode == 200) {
-      final responseBody = json.decode(response.body);
-      final String accessToken = responseBody["accessToken"];
-      final String tokenType = responseBody["tokenType"];
-
-      print("Login successful!");
-      print("Received accessToken: $accessToken");
-      print("Received tokenType: $tokenType");
-
-      _saveToken(accessToken, tokenType);
-
-      Navigator.pushNamed(context, '/first');
-    } else {
-      print("Error during login: ${response.body}");
-    }
-  }
-
-  Future<void> _saveToken(String accessToken, String tokenType) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('accessToken', accessToken);
-    await prefs.setString('tokenType', tokenType);
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/logo.dart';
+import '../widgets/1_onboarding_widget/logo.dart';
 import '../widgets/main_button_set.dart';
 import '../widgets/textinput_widget.dart';
 

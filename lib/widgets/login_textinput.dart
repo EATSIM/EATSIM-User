@@ -4,7 +4,7 @@ import 'main_button_set.dart';
 import '../widgets/checkbox.dart';
 import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
-import 'logo.dart';
+import '1_onboarding_widget/logo.dart';
 import '../widgets/school_list_widget.dart';
 
 class LoginTextInputWidget extends StatefulWidget {

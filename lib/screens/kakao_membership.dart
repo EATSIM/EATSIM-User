@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/main_button_set.dart';
 import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
-import '../widgets/logo.dart';
+import '../widgets/1_onboarding_widget/logo.dart';
 import '../widgets/school_list_widget.dart';
 
 class KakaoMembershipScreen extends StatefulWidget {

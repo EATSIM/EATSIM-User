@@ -68,14 +68,14 @@ class infoAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 //매뉴 앱바
 class MenuAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String cafeteriaName;
+  final String restaurantName;
 
-  MenuAppBar({Key? key, required this.cafeteriaName}) : super(key: key);
+  MenuAppBar({Key? key, required this.restaurantName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('대구가톨릭대학교 $cafeteriaName'),
+      title: Text('대구가톨릭대학교 $restaurantName'),
       titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 17,
