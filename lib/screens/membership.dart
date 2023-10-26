@@ -6,8 +6,8 @@ import '../widgets/dialog.dart';
 import '../widgets/fail_dialog.dart';
 import '../widgets/1_onboarding_widget/logo.dart';
 import '../widgets/school_list_widget.dart';
-import '../server/school_service.dart';
 import '../server/membership_server.dart';
+import '../server/school_service.dart';
 
 class MembershipScreen extends StatefulWidget {
   const MembershipScreen({Key? key, required this.phoneNumber})
